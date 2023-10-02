@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 416002632}
   - component: {fileID: 416002634}
   - component: {fileID: 416002633}
-  - component: {fileID: 416002636}
+  - component: {fileID: 416002635}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -391,7 +391,7 @@ BoxCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.000000029802322, y: -0.08090532}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0, y: 0.08, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.31, y: 0.48}
     newSize: {x: 0.31, y: 0.48}
@@ -401,7 +401,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.28007054, y: 0.27377066}
   m_EdgeRadius: 0
---- !u!114 &416002636
+--- !u!114 &416002635
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -410,10 +410,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 416002629}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a74aa0d837b6a54aac84eb445d74dd3, type: 3}
+  m_Script: {fileID: 11500000, guid: 2529b37fbf33cf047b7740230da8b43a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 1
+  verticalInputAcceleration: 8
+  horizontalInputAcceleration: 200
+  maxSpeed: 150
+  maxRotationSpeed: 600
+  velocityDrag: 1
+  rotationDrag: 1.3
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
