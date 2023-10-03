@@ -19,6 +19,9 @@ public class ship_movement : MonoBehaviour
     private Vector3 velocity;
     private float zRotationVelocity;
 
+    private float oldVertAccel;
+    private float oldHorizAccel;
+
     private void Update()
     {
         if (Input.GetAxis("Vertical") >= 0) 
@@ -51,5 +54,20 @@ public class ship_movement : MonoBehaviour
         // update transform
         transform.position += velocity * Time.deltaTime;
         transform.Rotate(0, 0, zRotationVelocity * Time.deltaTime);
+    }
+
+    public void pauseMovement()
+    {
+        // stop ship in place
+        velocity = Vector3.zero;
+        zRotationVelocity = 0;
+
+        // save old accel settings
+        oldVertAccel = verticalInputAcceleration;
+        oldHorizAccel = horizontalInputAcceleration;
+
+        // set accel to zero so player cant move
+        verticalInputAcceleration = 0;
+        horizontalInputAcceleration = 0;
     }
 }
