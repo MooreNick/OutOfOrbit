@@ -14,7 +14,7 @@ public class FollowPlayer : MonoBehaviour
     public float followFOV = 60;
     public float cutsceneFOV = 30;
 
-    public int zoomSpeed = 10;
+    public float zoomSpeed = 0.1f;
     public float panSpeed = 0.1f;
 
     void LateUpdate()
@@ -33,7 +33,7 @@ public class FollowPlayer : MonoBehaviour
                 //adjust fov
                 float fovDiff = followFOV - cutsceneFOV;
                 if (cam.fieldOfView > cutsceneFOV)
-                    cam.fieldOfView -= fovDiff / zoomSpeed;
+                    cam.fieldOfView -= fovDiff * zoomSpeed;
                 //adjust cam position
                 Vector3 newCamPos = Vector3.Lerp(transform.position, targetCamPos, panSpeed);
                 transform.position = newCamPos;
