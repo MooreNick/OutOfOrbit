@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class ship_movement : MonoBehaviour
 {
+    public Transform npcTransform;
+
     public float verticalInputAcceleration = 8;
     public float horizontalInputAcceleration = 200;
 
@@ -69,5 +71,16 @@ public class ship_movement : MonoBehaviour
         // set accel to zero so player cant move
         verticalInputAcceleration = 0;
         horizontalInputAcceleration = 0;
+    }
+
+    public void faceNPC()
+    {
+        if(npcTransform != null)
+        {
+            Vector3 direction = npcTransform.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            angle += -90;
+            transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+        }
     }
 }
