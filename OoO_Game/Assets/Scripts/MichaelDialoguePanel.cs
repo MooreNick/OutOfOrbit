@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using TMPro;
 
 public class MichaelDialoguePanel : MonoBehaviour
 {
+    public GameObject michaelTriggerZone;
+    public UnityEvent onLeaveCutscene;
+
     private TextMeshProUGUI dialogueTM;
     public float secsBetweenCharsTyped;
 
     public List<string> firstEncounterLines;
     private List<string> linesToSay = new List<string>();
-
-    private bool inCutscene = false;
 
     private bool skippedDialogue = false;
 
@@ -44,7 +46,6 @@ public class MichaelDialoguePanel : MonoBehaviour
 
     public void startDialogue()
     {
-        inCutscene = true;
         StartCoroutine(typeDialogue());
     }
 
@@ -77,6 +78,10 @@ public class MichaelDialoguePanel : MonoBehaviour
                 }
             }
         }
+        dialogueTM.text = "";
+        onLeaveCutscene.Invoke(); // do actions to make cutscene end
+        michaelTriggerZone.SetActive(false);
+        gameObject.SetActive(false); //make michael dialogue panel not show/run
     } 
-
+    
 }

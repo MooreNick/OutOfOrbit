@@ -73,6 +73,15 @@ public class ship_movement : MonoBehaviour
         horizontalInputAcceleration = 0;
     }
 
+    public void unpauseMovement()
+    {
+        verticalInputAcceleration = oldVertAccel;
+        horizontalInputAcceleration = oldHorizAccel;
+
+        oldVertAccel = 0;
+        oldHorizAccel = 0;
+    }
+
     public void faceNPC()
     {
         if(npcTransform != null)

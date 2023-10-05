@@ -502,6 +502,18 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1367573262}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 416002635}
         m_TargetAssemblyTypeName: ship_movement, Assembly-CSharp
         m_MethodName: pauseMovement
@@ -513,18 +525,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1367573266}
-        m_TargetAssemblyTypeName: MichaelDialoguePanel, Assembly-CSharp
-        m_MethodName: toggleActive
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 416002635}
         m_TargetAssemblyTypeName: ship_movement, Assembly-CSharp
@@ -1386,8 +1386,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a83adc9b331b654897606e32c5c0a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  michaelTriggerZone: {fileID: 203613920}
+  onLeaveCutscene:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 416002635}
+        m_TargetAssemblyTypeName: ship_movement, Assembly-CSharp
+        m_MethodName: unpauseMovement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 519420033}
+        m_TargetAssemblyTypeName: FollowPlayer, Assembly-CSharp
+        m_MethodName: outOfCutscene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   secsBetweenCharsTyped: 0.1
-  michaelGreeting: Hey there, I'm Michael!
+  firstEncounterLines:
+  - Hello there, I'm Michael! I am your personal assistant robot. Come to me to get
+    assigned quests!
+  - I don't have any quests for you at the moment. Come back later!
 --- !u!1 &1683131133
 GameObject:
   m_ObjectHideFlags: 0

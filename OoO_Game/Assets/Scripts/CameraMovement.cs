@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
+    private Camera cam;
+
     public Transform player;
     public Transform npc;
     
@@ -17,6 +19,11 @@ public class FollowPlayer : MonoBehaviour
     public float zoomSpeed = 0.1f;
     public float panSpeed = 0.1f;
 
+    private void Start()
+    {
+        cam = GetComponent<Camera>();
+    }
+
     void LateUpdate()
     {
         if(player != null)
@@ -29,7 +36,6 @@ public class FollowPlayer : MonoBehaviour
             }
             else //in cutscene
             {
-                Camera cam = GetComponent<Camera>();
                 //adjust fov
                 float fovDiff = followFOV - cutsceneFOV;
                 if (cam.fieldOfView > cutsceneFOV)
@@ -39,6 +45,12 @@ public class FollowPlayer : MonoBehaviour
                 transform.position = newCamPos;
             }
         }
+    }
+
+    public void outOfCutscene()
+    {
+        inCutscene = false;
+        cam.fieldOfView = followFOV;
     }
 
     public void npcInteractionZoom()
