@@ -7,14 +7,32 @@ public class MichaelDialoguePanel : MonoBehaviour
 {
     private TextMeshProUGUI dialogueTM;
     public float secsBetweenCharsTyped;
-    public string michaelGreeting;
+
+    public List<string> firstEncounterLines;
+    private List<string> linesToSay = new List<string>();
+
+    private bool inCutscene = false;
 
     private bool skippedDialogue = false;
 
+    //called when script is loaded (at game start)
+    private void Awake()
+    {
+        gameObject.SetActive(false); //not showing on game start
+
+
+        dialogueTM = GetComponentInChildren<TextMeshProUGUI>();
+
+       // load up the starting lines into linesToSay
+       foreach(string line in firstEncounterLines)
+        {
+            linesToSay.Add(line);
+        } 
+    }
+
     private void Start()
     {
-        dialogueTM = GetComponentInChildren<TextMeshProUGUI>();
-        gameObject.SetActive(false); //not showing on game start
+
     }
     
     //runs every frame while dialogue panel is active
@@ -26,34 +44,39 @@ public class MichaelDialoguePanel : MonoBehaviour
 
     public void startDialogue()
     {
-        StartCoroutine(typeDialogue(michaelGreeting));
+        inCutscene = true;
+        StartCoroutine(typeDialogue());
     }
 
-    IEnumerator typeDialogue(string lineOfDialogue)
+    IEnumerator typeDialogue()
     {
         if(dialogueTM != null)
         {
-            dialogueTM.text = "";
-            for(int i = 0; i < lineOfDialogue.Length; ++i)
+            foreach (string lineOfDialogue in linesToSay)
             {
-                if (!skippedDialogue)
+                skippedDialogue = false;
+                dialogueTM.text = "";
+                for (int i = 0; i < lineOfDialogue.Length; ++i)
                 {
-                    dialogueTM.text += lineOfDialogue[i];
-                    yield return new WaitForSeconds(secsBetweenCharsTyped);
+                    if (!skippedDialogue)
+                    {
+                        dialogueTM.text += lineOfDialogue[i];
+                        yield return new WaitForSeconds(secsBetweenCharsTyped);
+                    }
+                    else // finish the dialogue instantly instead of letter by letter
+                    {
+                        dialogueTM.text += lineOfDialogue.Substring(i);
+                        skippedDialogue = false; //reset skipped
+                        break;
+                    }
                 }
-                else // finish the dialogue instantly instead of letter by letter
+                //wait for user to left click before continuing to next dialgoue
+                while (!Input.GetMouseButtonDown(0))
                 {
-                    dialogueTM.text += lineOfDialogue.Substring(i);
-                    skippedDialogue = false; //reset skipped
-                    break;
+                    yield return null; //wait for next frame
                 }
             }
         }
-    }
-
-    public void toggleActive()
-    {
-        bool currentState = gameObject.activeSelf;
-        gameObject.SetActive(!currentState);
     } 
+
 }
