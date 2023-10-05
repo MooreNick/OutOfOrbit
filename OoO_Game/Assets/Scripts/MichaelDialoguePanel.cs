@@ -9,10 +9,19 @@ public class MichaelDialoguePanel : MonoBehaviour
     public float secsBetweenCharsTyped;
     public string michaelGreeting;
 
+    private bool skippedDialogue = false;
+
     private void Start()
     {
         dialogueTM = GetComponentInChildren<TextMeshProUGUI>();
         gameObject.SetActive(false); //not showing on game start
+    }
+    
+    //runs every frame while dialogue panel is active
+    private void Update()
+    {
+        //check for mouse left click for skip dialogue in typeDialogue
+        skippedDialogue = (Input.GetMouseButton(0)) ? true : false;
     }
 
     public void startDialogue()
@@ -24,10 +33,20 @@ public class MichaelDialoguePanel : MonoBehaviour
     {
         if(dialogueTM != null)
         {
-            foreach(char c in lineOfDialogue)
+            dialogueTM.text = "";
+            for(int i = 0; i < lineOfDialogue.Length; ++i)
             {
-                dialogueTM.text += c;
-                yield return new WaitForSeconds(secsBetweenCharsTyped);
+                if (!skippedDialogue)
+                {
+                    dialogueTM.text += lineOfDialogue[i];
+                    yield return new WaitForSeconds(secsBetweenCharsTyped);
+                }
+                else // finish the dialogue instantly instead of letter by letter
+                {
+                    dialogueTM.text += lineOfDialogue.Substring(i);
+                    skippedDialogue = false; //reset skipped
+                    break;
+                }
             }
         }
     }
