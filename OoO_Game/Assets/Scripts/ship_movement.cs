@@ -7,14 +7,14 @@ using UnityEngine;
 
 public class ship_movement : MonoBehaviour
 {
-    public float verticalInputAcceleration = 8;
-    public float horizontalInputAcceleration = 200;
+    public float verticalInputAcceleration = 7;
+    public float horizontalInputAcceleration = 300;
 
-    public float maxSpeed = 150;
+    public float maxSpeed = 100;
     public float maxRotationSpeed = 600;
 
-    public float velocityDrag = 1;
-    public float rotationDrag = 1.3f;
+    public float velocityDrag = 1.1f;
+    public float rotationDrag = 1.5f;
 
     private Vector3 velocity;
     private float zRotationVelocity;
