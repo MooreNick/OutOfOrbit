@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class ship_movement : MonoBehaviour
 {
+    public Transform npcTransform;
+
     public float verticalInputAcceleration = 8;
     public float horizontalInputAcceleration = 200;
 
@@ -18,6 +20,9 @@ public class ship_movement : MonoBehaviour
 
     private Vector3 velocity;
     private float zRotationVelocity;
+
+    private float oldVertAccel;
+    private float oldHorizAccel;
 
     private void Update()
     {
@@ -51,5 +56,40 @@ public class ship_movement : MonoBehaviour
         // update transform
         transform.position += velocity * Time.deltaTime;
         transform.Rotate(0, 0, zRotationVelocity * Time.deltaTime);
+    }
+
+    public void pauseMovement()
+    {
+        // stop ship in place
+        velocity = Vector3.zero;
+        zRotationVelocity = 0;
+
+        // save old accel settings
+        oldVertAccel = verticalInputAcceleration;
+        oldHorizAccel = horizontalInputAcceleration;
+
+        // set accel to zero so player cant move
+        verticalInputAcceleration = 0;
+        horizontalInputAcceleration = 0;
+    }
+
+    public void unpauseMovement()
+    {
+        verticalInputAcceleration = oldVertAccel;
+        horizontalInputAcceleration = oldHorizAccel;
+
+        oldVertAccel = 0;
+        oldHorizAccel = 0;
+    }
+
+    public void faceNPC()
+    {
+        if(npcTransform != null)
+        {
+            Vector3 direction = npcTransform.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            angle += -90;
+            transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+        }
     }
 }
