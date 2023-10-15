@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class QuestPanelController : MonoBehaviour
 {
+    public List<string> questDescriptions; //index refers to quest number
+
     private TextMeshProUGUI noneActive;
     private GameObject questPanelOne;
     private GameObject questPanelTwo;
