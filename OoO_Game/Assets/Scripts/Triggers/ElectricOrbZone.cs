@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class ElectricOrbZone : MonoBehaviour
 {
-
-    public InspectOrbQuestStep orbQuestInstance;
+    public GameEvent electricOrbTriggered;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            orbQuestInstance.hasInspected();
+            electricOrbTriggered.Raise(this);
         }
     }
 }

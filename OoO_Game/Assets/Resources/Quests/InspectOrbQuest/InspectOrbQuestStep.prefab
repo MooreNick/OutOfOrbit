@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5749181472186808541}
   - component: {fileID: -6680367453403918288}
+  - component: {fileID: -6888953786700258330}
   m_Layer: 0
   m_Name: InspectOrbQuestStep
   m_TagString: Untagged
@@ -44,5 +45,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e884b09ee56ea1488d809723bdc919f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Inspect the electricity storage orb for damage
-  orbZoneTrigger: {fileID: 0}
+--- !u!114 &-6888953786700258330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6835063461501355408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 7e7ada6c88b714041a47fec88a1ed79c, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6680367453403918288}
+        m_TargetAssemblyTypeName: InspectOrbQuestStep, Assembly-CSharp
+        m_MethodName: hasInspected
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

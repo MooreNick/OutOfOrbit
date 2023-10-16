@@ -5398,6 +5398,38 @@ MonoBehaviour:
   cutsceneFOV: 30
   zoomSpeed: 0.01
   panSpeed: 0.005
+--- !u!1 &522457421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 522457422}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &522457422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522457421}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5669689, y: 9.291599, z: -0.40771708}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 577739866}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &526201634
 GameObject:
   m_ObjectHideFlags: 0
@@ -5532,6 +5564,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526201634}
   m_CullTransparentMesh: 1
+--- !u!1 &577739865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 577739866}
+  - component: {fileID: 577739867}
+  m_Layer: 0
+  m_Name: QuestManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &577739866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577739865}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 522457422}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &577739867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577739865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e4d0211545a2b342a30d075027dbf83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &658856219
 GameObject:
   m_ObjectHideFlags: 0
@@ -11195,7 +11271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2051525026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11208,7 +11284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f115459355a7bba45b3c0c2ffc5bb7fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbQuestInstance: {fileID: -6680367453403918288, guid: f62b2cb90c6069845806fdd85d56e85c, type: 3}
+  electricOrbTriggered: {fileID: 11400000, guid: 7e7ada6c88b714041a47fec88a1ed79c, type: 2}
 --- !u!61 &2051525027
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11372,3 +11448,4 @@ SceneRoots:
   - {fileID: 379417931}
   - {fileID: 1683131136}
   - {fileID: 1804283366}
+  - {fileID: 522457422}

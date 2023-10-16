@@ -4,21 +4,13 @@ using UnityEngine;
 
 public class InspectOrbQuestStep : QuestStep
 {
-    public GameObject orbZoneTrigger;
-
     private bool inspectedOrb = false;
 
-    //setup needed stuff for this quest step
-    protected override void StepSpecificInitialization()
-    {
-        orbZoneTrigger.SetActive(true);
-    }
-
     //gets called when player enters orbZoneTrigger
-    public void hasInspected()
+    public void hasInspected(Component sender, object data)
     {
         inspectedOrb = true;
-        orbZoneTrigger.SetActive(false); //deactivate zone gameobject
+        sender.gameObject.SetActive(false); //deactivate zone gameobject
         FinishQuestStep();
     }
 }
