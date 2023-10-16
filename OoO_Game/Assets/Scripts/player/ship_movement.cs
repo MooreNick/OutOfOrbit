@@ -4,6 +4,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ship_movement : MonoBehaviour
 {
@@ -18,6 +19,15 @@ public class ship_movement : MonoBehaviour
 
     private Vector3 velocity;
     private float zRotationVelocity;
+
+    //private PlayerInput playerInput;
+    public GameObject projectile;
+    private GameObject newProjectile;
+
+    private void Awake()
+    {
+        //playerInput = new PlayerInput();
+    }
 
     private void Update()
     {
@@ -51,5 +61,21 @@ public class ship_movement : MonoBehaviour
         // update transform
         transform.position += velocity * Time.deltaTime;
         transform.Rotate(0, 0, zRotationVelocity * Time.deltaTime);
+
+        if (Input.GetButton("Fire"))
+        {
+            newProjectile = Instantiate(projectile, transform.position, transform.rotation);
+        }
     }
-}
+    /*
+    private void OnEnable()
+    {
+        playerInput.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerInput.Player.Disable();
+    }
+    */
+}   
