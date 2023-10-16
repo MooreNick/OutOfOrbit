@@ -8,12 +8,13 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 1.5f;
     public Transform followTransform;
-    private Quaternion rot;
     private float timeout = 0.0f;
+    private Vector2 shipDirection;
 
     private void Start()
     {
         transform.Rotate(followTransform.rotation.eulerAngles);
+        shipDirection = followTransform.up;
     }
 
     private void Update()
@@ -25,12 +26,12 @@ public class Bullet : MonoBehaviour
 
     void MoveBullet()
     {
-        transform.Translate(followTransform.up * speed * Time.deltaTime);
+        transform.Translate(shipDirection * speed * Time.deltaTime);
     }
 
     void DestroyBullet()
     {
-        if (timeout > 20.0f)
+        if (timeout > 60.0f)
         {
             Destroy(this.gameObject);
         }

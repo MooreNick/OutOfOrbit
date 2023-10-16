@@ -20,13 +20,13 @@ public class ship_movement : MonoBehaviour
     private Vector3 velocity;
     private float zRotationVelocity;
 
-    //private PlayerInput playerInput;
+    private PlayerInput playerInput;
     public GameObject projectile;
     private GameObject newProjectile;
 
     private void Awake()
     {
-        //playerInput = new PlayerInput();
+        playerInput = new PlayerInput();
     }
 
     private void Update()
@@ -62,12 +62,12 @@ public class ship_movement : MonoBehaviour
         transform.position += velocity * Time.deltaTime;
         transform.Rotate(0, 0, zRotationVelocity * Time.deltaTime);
 
-        if (Input.GetButton("Fire"))
+        if (playerInput.Player.Fire.ReadValue<float>() != 0)
         {
             newProjectile = Instantiate(projectile, transform.position, transform.rotation);
         }
     }
-    /*
+
     private void OnEnable()
     {
         playerInput.Player.Enable();
@@ -77,5 +77,4 @@ public class ship_movement : MonoBehaviour
     {
         playerInput.Player.Disable();
     }
-    */
 }   
