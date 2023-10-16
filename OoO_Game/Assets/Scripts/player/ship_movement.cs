@@ -8,21 +8,26 @@ using UnityEngine.InputSystem;
 
 public class ship_movement : MonoBehaviour
 {
-    public float verticalInputAcceleration = 7;
-    public float horizontalInputAcceleration = 300;
+    public float verticalInputAcceleration = 7;         // how fast ship accelerates forward
+    public float horizontalInputAcceleration = 200;     // how fast ship turns
 
-    public float maxSpeed = 100;
-    public float maxRotationSpeed = 600;
+    public float maxSpeed = 800;
+    public float maxRotationSpeed = 500;
 
     public float velocityDrag = 1.1f;
-    public float rotationDrag = 1.5f;
+    public float rotationDrag = 1.8f;
 
     private Vector3 velocity;
     private float zRotationVelocity;
 
     private PlayerInput playerInput;
+
+    // Weapon variables
     public GameObject projectile;
     private GameObject newProjectile;
+    private float shotTimer = 0.0f;
+    [SerializeField]
+    private float cooldown = 0.5f;
 
     private void Awake()
     {
@@ -62,10 +67,17 @@ public class ship_movement : MonoBehaviour
         transform.position += velocity * Time.deltaTime;
         transform.Rotate(0, 0, zRotationVelocity * Time.deltaTime);
 
-        if (playerInput.Player.Fire.ReadValue<float>() != 0)
+        // shotTimer increments until it's above cooldown,
+        // then the player can fire.
+        shotTimer = shotTimer + Time.deltaTime;
+
+        if (playerInput.Player.Fire.ReadValue<float>() != 0
+            && shotTimer >= cooldown)
         {
             newProjectile = Instantiate(projectile, transform.position, transform.rotation);
+            shotTimer = 0.0f;
         }
+
     }
 
     private void OnEnable()

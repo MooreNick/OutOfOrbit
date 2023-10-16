@@ -6,9 +6,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 1.5f;
+    public float speed = 10.0f;
     public Transform followTransform;
-    private float timeout = 0.0f;
+    [SerializeField]
+    private float timer = 180.0f;
     private Vector2 shipDirection;
 
     private void Start()
@@ -20,7 +21,7 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         MoveBullet();
-        timeout += 0.1f;
+        timer -= 0.1f;
         DestroyBullet();
     }
 
@@ -31,7 +32,7 @@ public class Bullet : MonoBehaviour
 
     void DestroyBullet()
     {
-        if (timeout > 60.0f)
+        if (timer <= 0.0f)
         {
             Destroy(this.gameObject);
         }
