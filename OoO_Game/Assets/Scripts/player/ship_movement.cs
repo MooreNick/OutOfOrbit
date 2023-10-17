@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 
 public class ship_movement : MonoBehaviour
 {
+    public Transform npcTransform;
     public float verticalInputAcceleration = 7;         // how fast ship accelerates forward
     public float horizontalInputAcceleration = 200;     // how fast ship turns
 
@@ -28,6 +29,9 @@ public class ship_movement : MonoBehaviour
     private float shotTimer = 0.0f;
     [SerializeField]
     private float cooldown = 0.5f;
+
+    private float oldVertAccel;
+    private float oldHorizAccel;
 
     private void Awake()
     {
@@ -78,6 +82,41 @@ public class ship_movement : MonoBehaviour
             shotTimer = 0.0f;
         }
 
+    }
+
+    public void unpauseMovement()
+    {
+        verticalInputAcceleration = oldVertAccel;
+        horizontalInputAcceleration = oldHorizAccel;
+
+        oldVertAccel = 0;
+        oldHorizAccel = 0;
+    }
+
+    public void pauseMovement()
+    {
+        // stop ship in place
+        velocity = Vector3.zero;
+        zRotationVelocity = 0;
+
+        // save old accel settings
+        oldVertAccel = verticalInputAcceleration;
+        oldHorizAccel = horizontalInputAcceleration;
+
+        // set accel to zero so player cant move
+        verticalInputAcceleration = 0;
+        horizontalInputAcceleration = 0;
+    }
+
+    public void faceNPC()
+    {
+        if (npcTransform != null)
+        {
+            Vector3 direction = npcTransform.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            angle += -90;
+            transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+        }
     }
 
     private void OnEnable()

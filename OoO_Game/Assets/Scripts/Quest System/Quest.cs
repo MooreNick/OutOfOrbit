@@ -1,3 +1,5 @@
+//this wraps the static info and dynamic stuff
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,17 +25,21 @@ public class Quest
         currentQuestStepIndex++;
     }
 
+    //checks to see if we have one out of range with our quest step array
     public bool CurrentStepExists()
     {
         return (currentQuestStepIndex < info.questStepPrefabs.Length);
     }
 
+    //adds the current quest step prefab to the scene
     public void InstantiateCurrentQuestStep(Transform parentTransform)
     {
         GameObject questStepPrefab = GetCurrentQuestStepPrefab();
         if(questStepPrefab != null)
         {
-            Object.Instantiate<GameObject>(questStepPrefab, parentTransform);
+            QuestStep questStep = Object.Instantiate<GameObject>(questStepPrefab, parentTransform)
+                .GetComponent<QuestStep>(); //adds to scene
+            questStep.InitializeQuestStep(info.id);
         }
     }
 
@@ -42,6 +48,7 @@ public class Quest
         GameObject questStepPrefab = null;
         if (CurrentStepExists())
         {
+            //gets copy of quest step prefab from quest step array in static data
             questStepPrefab = info.questStepPrefabs[currentQuestStepIndex];
         }
         else

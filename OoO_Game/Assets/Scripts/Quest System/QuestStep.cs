@@ -4,7 +4,16 @@ using UnityEngine;
 
 public abstract class QuestStep : MonoBehaviour
 {
+    public GameEvent questStepCompleted;
+
     private bool isFinished = false;
+
+    private string questId;
+
+    public void InitializeQuestStep(string questId)
+    {
+        this.questId = questId;
+    }
 
     protected void FinishQuestStep()
     {
@@ -12,7 +21,7 @@ public abstract class QuestStep : MonoBehaviour
         {
             isFinished = true;
 
-            //TODO: go to next quest step
+            questStepCompleted.Raise(questId);
 
             Destroy(this.gameObject);
         }

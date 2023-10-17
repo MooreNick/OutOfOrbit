@@ -14,7 +14,7 @@ public class QuestStatic : ScriptableObject
     public List<string> questDialogueLines;
 
     [Header("Prerequisites")]
-    public QuestStatic[] questPrerequisites;
+    public int playerLevelRequired;
 
     [Header("Quest Steps")]
     public GameObject[] questStepPrefabs;
