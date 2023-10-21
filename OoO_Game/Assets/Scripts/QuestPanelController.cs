@@ -17,6 +17,19 @@ public class QuestPanelController : MonoBehaviour
     private GameObject checkmarkOne;
     private GameObject checkmarkTwo;
 
+    private bool questOnePopulated = false;
+    private bool questTwoPopulated = false;
+
+    private string questOneId = null;
+    private string questTwoId = null;
+    private bool unpopulated //true if no quests active
+    {
+        get
+        {
+            return (questOnePopulated == false && questTwoPopulated == false);
+        }
+    }
+
 
     //called when the script loads
     private void Awake()
@@ -49,10 +62,58 @@ public class QuestPanelController : MonoBehaviour
         //set quests as uncompleted
         checkmarkOne.SetActive(false);
         checkmarkTwo.SetActive(false);
+
+        questOnePopulated = false;
+        questTwoPopulated = false;
+    }
+    
+    public void OnQuestStepStarted(Component sender, object data)
+    {
+        if(data is string && sender is QuestStep) //make sure data is the quest step description
+        {
+            QuestStep questStep = (QuestStep)sender;
+
+            string questId = (string)data;
+
+            string stepDescription = questStep.description; 
+
+            if (unpopulated)
+            {
+                noneActive.gameObject.SetActive(false);
+                questOneId = questId;
+                questTextOne.text = stepDescription;
+                questOnePopulated = true;
+            }
+            else if (!questOnePopulated)
+            {
+                questTextOne.text = stepDescription;
+                questOneId = questId;
+                questPanelOne.SetActive(true);
+                questOnePopulated = true;
+
+            }
+            else if (!questTwoPopulated)
+            {
+                questTextTwo.text = stepDescription;
+                questTwoId = questId;
+                questPanelTwo.SetActive(true);
+                questTwoPopulated = true;
+            }
+            else
+            {
+                Debug.LogWarning("Started a quest step but both quest panels are populated.");
+            }
+        }
     }
 
-    void Update()
+    public void OnQuestStepCompleted(Component sender, object data)
     {
-        
+        if(data is string)
+        {
+            string questId = (string)data;
+
+        }
     }
+
+
 }

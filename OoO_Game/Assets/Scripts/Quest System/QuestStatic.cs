@@ -9,10 +9,7 @@ public class QuestStatic : ScriptableObject
 
     [Header("General")]
     public string displayName;
-/*
-    [Header("Dialogue")]
-    public List<string> questDialogueLines;
-*/
+
     [Header("Prerequisites")]
     public int playerLevelRequired;
 

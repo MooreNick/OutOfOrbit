@@ -43,10 +43,18 @@ public class QuestManager : MonoBehaviour
 
     private void StartQuest(string id)
     {
-        //TODO: send first quest steps dialogue lines to michael dialogue panel
         Quest quest = GetQuestById(id);
         quest.InstantiateCurrentQuestStep(this.transform);
         ChangeQuestState(quest.info.id, QuestState.IN_PROGRESS); 
+    }
+
+    public void OnAssignAQuest(Component sender, object data)
+    {
+        if(data is string)
+        {
+            string questId = data.ToString();
+            StartQuest(questId);
+        }
     }
 
 
@@ -60,8 +68,6 @@ public class QuestManager : MonoBehaviour
 
     private void AdvanceQuest(string id)
     {
-        //TODO: send the next dialogue lines for the new quest step to michael dialogue panel
-
         Quest quest = GetQuestById(id);
 
         quest.MoveToNextStep();
@@ -70,7 +76,7 @@ public class QuestManager : MonoBehaviour
         {
             quest.InstantiateCurrentQuestStep(this.transform);
         }
-        else
+        else //all quest steps completed
         {
             ChangeQuestState(quest.info.id, QuestState.CAN_FINISH);
             //TODO: add event invoke to inform questgiver that quest can be turned in

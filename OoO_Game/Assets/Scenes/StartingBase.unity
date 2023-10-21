@@ -5072,6 +5072,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3639852648816973544, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
   m_PrefabInstance: {fileID: 445827661}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &445827663 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7354212513530949038, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
+  m_PrefabInstance: {fileID: 445827661}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &466518162
 GameObject:
   m_ObjectHideFlags: 0
@@ -5405,6 +5410,7 @@ GameObject:
   - component: {fileID: 658856222}
   - component: {fileID: 658856221}
   - component: {fileID: 658856223}
+  - component: {fileID: 658856224}
   m_Layer: 5
   m_Name: Quest Panel
   m_TagString: Untagged
@@ -5486,6 +5492,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questDescriptions:
   - Inspect the electricity storage orb
+--- !u!114 &658856224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658856219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 2cac9691d7ddea341a0f447627c777c4, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 658856223}
+        m_TargetAssemblyTypeName: QuestPanelController, Assembly-CSharp
+        m_MethodName: OnQuestStepStarted
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &667662919
 GameObject:
   m_ObjectHideFlags: 0
@@ -9985,6 +10019,8 @@ GameObject:
   - component: {fileID: 828998932}
   - component: {fileID: 828998935}
   - component: {fileID: 828998936}
+  - component: {fileID: 828998938}
+  - component: {fileID: 828998937}
   - component: {fileID: 828998934}
   m_Layer: 0
   m_Name: Michael
@@ -10122,6 +10158,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82fc0c49ace844e9b25bada3517252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignAQuest: {fileID: 11400000, guid: 1225bba9ee74eb2408a790822fe6104a, type: 2}
+  questFinished: {fileID: 11400000, guid: 76e62528437ef1b4480a751a447fee75, type: 2}
+--- !u!114 &828998937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828998931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: ed6ca86b91a2f194bbdc34b89c6acf4a, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 828998936}
+        m_TargetAssemblyTypeName: QuestGiver, Assembly-CSharp
+        m_MethodName: OnQuestCanFinish
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &828998938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828998931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 5ec0d312aaaa23046a9d83c0f033f937, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 828998936}
+        m_TargetAssemblyTypeName: QuestGiver, Assembly-CSharp
+        m_MethodName: onNpcZoneTriggered
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1059272150 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3232407341222255281, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
@@ -10383,7 +10477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dabad912f4727c47a36333d95747c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 445827663}
   sceneName: SampleScene
 --- !u!70 &1324915056
 CapsuleCollider2D:
@@ -10433,6 +10527,7 @@ GameObject:
   - component: {fileID: 1367573263}
   - component: {fileID: 1367573265}
   - component: {fileID: 1367573264}
+  - component: {fileID: 1367573267}
   - component: {fileID: 1367573266}
   m_Layer: 5
   m_Name: Michael Dialogue Panel
@@ -10516,7 +10611,7 @@ MonoBehaviour:
   onLeaveCutscene:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1059272150}
         m_TargetAssemblyTypeName: ship_movement, Assembly-CSharp
         m_MethodName: unpauseMovement
         m_Mode: 1
@@ -10541,10 +10636,34 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   secsBetweenCharsTyped: 0.1
-  firstEncounterLines:
-  - Hello there, I'm Michael! I am your personal assistant robot. Come to me to get
-    assigned quests!
-  - I don't have any quests for you at the moment. Come back later!
+--- !u!114 &1367573267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367573262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 2cac9691d7ddea341a0f447627c777c4, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1367573266}
+        m_TargetAssemblyTypeName: MichaelDialoguePanel, Assembly-CSharp
+        m_MethodName: OnQuestStepStarted
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1683131133
 GameObject:
   m_ObjectHideFlags: 0

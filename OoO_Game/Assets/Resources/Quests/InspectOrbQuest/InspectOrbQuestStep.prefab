@@ -46,6 +46,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questStepCompleted: {fileID: 11400000, guid: cc4ad0ef6ca909049a73059a41e6b3df, type: 2}
+  questStepStarted: {fileID: 11400000, guid: 2cac9691d7ddea341a0f447627c777c4, type: 2}
+  description: Find the Electricity Storage Orb
+  stepDialogueLines:
+  - Hi, I'm michael and I'm your personal assistant robot. Come to me to get assigned
+    quests.
+  - There has been an issue with the base losing power. I suspect that something
+    is wrong with the power storage orb.
+  - The electricty storage orb is located in this base. Go inspect it to see if anythings
+    wrong.
 --- !u!114 &-6888953786700258330
 MonoBehaviour:
   m_ObjectHideFlags: 0

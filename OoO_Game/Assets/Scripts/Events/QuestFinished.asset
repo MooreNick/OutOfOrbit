@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c402a1d0664bc54a9c5308b61463be7, type: 3}
-  m_Name: QuestBecomeReady
-  m_EditorClassIdentifier: Assembly-CSharp::GameEvent
+  m_Name: QuestFinished
+  m_EditorClassIdentifier: 
   listeners: []

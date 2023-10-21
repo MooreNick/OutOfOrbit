@@ -12,7 +12,6 @@ public class MichaelDialoguePanel : MonoBehaviour
     private TextMeshProUGUI dialogueTM;
     public float secsBetweenCharsTyped;
 
-    public List<string> firstEncounterLines;
     private List<string> linesToSay = new List<string>();
 
     private bool skippedDialogue = false;
@@ -24,12 +23,6 @@ public class MichaelDialoguePanel : MonoBehaviour
 
 
         dialogueTM = GetComponentInChildren<TextMeshProUGUI>();
-
-       // load up the starting lines into linesToSay
-       foreach(string line in firstEncounterLines)
-        {
-            linesToSay.Add(line);
-        } 
     }
 
     private void Start()
@@ -44,8 +37,22 @@ public class MichaelDialoguePanel : MonoBehaviour
         skippedDialogue = (Input.GetMouseButton(0)) ? true : false;
     }
 
+    public void OnQuestStepStarted(Component sender, object data)
+    {
+        if(data is List<string>)
+        {
+            updateDialogue((List<string>)data);
+        }
+    }
+
+    private void updateDialogue(List<string> newLines)
+    {
+        linesToSay = newLines;
+    }
+
     public void startDialogue()
     {
+        //TODO: may have to loop until updated dialogue to start typing dialogue
         StartCoroutine(typeDialogue());
     }
 
