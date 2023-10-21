@@ -4840,7 +4840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7fadbf5994fec44cbad6fbec4bfaf13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  npcZoneTriggered: {fileID: 11400000, guid: 5ec0d312aaaa23046a9d83c0f033f937, type: 2}
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
@@ -5062,8 +5062,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3639852648816973544, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 1059272156}
   m_SourcePrefab: {fileID: 100100000, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
+--- !u!1 &445827662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3639852648816973544, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
+  m_PrefabInstance: {fileID: 445827661}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &466518162
 GameObject:
   m_ObjectHideFlags: 0
@@ -10119,7 +10127,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3232407341222255281, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
   m_PrefabInstance: {fileID: 445827661}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 445827662}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2529b37fbf33cf047b7740230da8b43a, type: 3}
@@ -10130,6 +10138,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6274131194247334134, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
   m_PrefabInstance: {fileID: 445827661}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1059272156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445827662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f474ef364b9e149a9758f133dec860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLevelChanged: {fileID: 11400000, guid: 06dbeff93fc1dea40bbe0ffe97b3c95d, type: 2}
 --- !u!1 &1298843539
 GameObject:
   m_ObjectHideFlags: 0
@@ -10945,6 +10966,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2044437942}
   - component: {fileID: 2044437941}
+  - component: {fileID: 2044437943}
+  - component: {fileID: 2044437944}
   m_Layer: 0
   m_Name: QuestManager
   m_TagString: Untagged
@@ -10981,6 +11004,62 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2044437943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044437940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: cc4ad0ef6ca909049a73059a41e6b3df, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2044437941}
+        m_TargetAssemblyTypeName: QuestManager, Assembly-CSharp
+        m_MethodName: onQuestStepCompleted
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2044437944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044437940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 06dbeff93fc1dea40bbe0ffe97b3c95d, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2044437941}
+        m_TargetAssemblyTypeName: QuestManager, Assembly-CSharp
+        m_MethodName: onPlayerLevelChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2047780383
 GameObject:
   m_ObjectHideFlags: 0
@@ -11125,6 +11204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2051525029}
   - component: {fileID: 2051525028}
+  - component: {fileID: 2051525030}
   - component: {fileID: 2051525027}
   m_Layer: 0
   m_Name: Electricity Orb Zone
@@ -11246,6 +11326,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2051525030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051525025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f115459355a7bba45b3c0c2ffc5bb7fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  electricOrbTriggered: {fileID: 11400000, guid: 7e7ada6c88b714041a47fec88a1ed79c, type: 2}
 --- !u!1 &2067484857
 GameObject:
   m_ObjectHideFlags: 0

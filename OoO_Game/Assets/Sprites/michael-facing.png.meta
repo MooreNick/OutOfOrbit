@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      michael-facing_0: 7991254264143493978
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

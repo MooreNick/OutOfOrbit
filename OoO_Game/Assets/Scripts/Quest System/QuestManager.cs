@@ -16,9 +16,10 @@ public class QuestManager : MonoBehaviour
         questMap = CreateQuestMap(); 
     }
 
-    public void PlayerLevelChanged(Component sender, object data)
+    public void onPlayerLevelChanged(Component sender, object data)
     {
-        if (data is int) currentPlayerLevel = (int)data;
+        if (data is int) currentPlayerLevel = (int)data; //update the current player level
+        //check if any quests meet can now be started at the new level and set them as CAN_START
         foreach(Quest quest in questMap.Values)
         {
             if (quest.info.playerLevelRequired <= currentPlayerLevel && quest.state == QuestState.REQUIREMENTS_NOT_MET)
@@ -42,6 +43,7 @@ public class QuestManager : MonoBehaviour
 
     private void StartQuest(string id)
     {
+        //TODO: send first quest steps dialogue lines to michael dialogue panel
         Quest quest = GetQuestById(id);
         quest.InstantiateCurrentQuestStep(this.transform);
         ChangeQuestState(quest.info.id, QuestState.IN_PROGRESS); 
@@ -58,7 +60,11 @@ public class QuestManager : MonoBehaviour
 
     private void AdvanceQuest(string id)
     {
+        //TODO: send the next dialogue lines for the new quest step to michael dialogue panel
+
         Quest quest = GetQuestById(id);
+
+        quest.MoveToNextStep();
 
         if (quest.CurrentStepExists())
         {
@@ -67,12 +73,13 @@ public class QuestManager : MonoBehaviour
         else
         {
             ChangeQuestState(quest.info.id, QuestState.CAN_FINISH);
+            //TODO: add event invoke to inform questgiver that quest can be turned in
         }
     }
 
     private void FinishQuest(string id)
     {
-        //todo: finish the quest
+        //TODO: probably gets called by quest giver when quest gets turned in
     }
 
     private Dictionary<string, Quest> CreateQuestMap()

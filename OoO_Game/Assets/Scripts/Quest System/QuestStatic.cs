@@ -9,19 +9,15 @@ public class QuestStatic : ScriptableObject
 
     [Header("General")]
     public string displayName;
-
+/*
     [Header("Dialogue")]
     public List<string> questDialogueLines;
-
+*/
     [Header("Prerequisites")]
     public int playerLevelRequired;
 
     [Header("Quest Steps")]
     public GameObject[] questStepPrefabs;
-
-    [Header("Rewards")]
-    public int goldReward;
-    public int experienceGained;
 
     private void OnValidate()
     {

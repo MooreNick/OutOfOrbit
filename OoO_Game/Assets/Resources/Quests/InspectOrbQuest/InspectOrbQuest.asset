@@ -13,10 +13,7 @@ MonoBehaviour:
   m_Name: InspectOrbQuest
   m_EditorClassIdentifier: 
   <id>k__BackingField: InspectOrbQuest
-  displayName: Inspect the electric storage orb
-  questDialogueLines: []
+  displayName: Inspect Electric Orb
   playerLevelRequired: 0
   questStepPrefabs:
   - {fileID: 6835063461501355408, guid: f62b2cb90c6069845806fdd85d56e85c, type: 3}
-  goldReward: 25
-  experienceGained: 250

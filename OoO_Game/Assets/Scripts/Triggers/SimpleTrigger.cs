@@ -4,20 +4,16 @@ using UnityEngine.Events;
 public class SimpleTrigger : MonoBehaviour
 {
 
-    public Rigidbody2D player;
+    public GameEvent npcZoneTriggered;
     public UnityEvent onTriggerEnter;
 
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        //do not trigger if there's no trigger target object
-        if (player == null) return;
-
-        //only trigger if the triggerBody matches
-        var hitRb = other.attachedRigidbody;
-        if (hitRb == player)
+        if (other.tag == "Player")
         {
-            onTriggerEnter.Invoke();
+            onTriggerEnter.Invoke(); //invoke unityevent
+            npcZoneTriggered.Raise();
         }
     }
 
