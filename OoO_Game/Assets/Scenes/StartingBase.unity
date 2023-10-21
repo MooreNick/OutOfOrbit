@@ -4892,18 +4892,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1367573266}
-        m_TargetAssemblyTypeName: MichaelDialoguePanel, Assembly-CSharp
-        m_MethodName: startDialogue
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!1 &379417927
 GameObject:
   m_ObjectHideFlags: 0
@@ -5411,6 +5399,7 @@ GameObject:
   - component: {fileID: 658856221}
   - component: {fileID: 658856223}
   - component: {fileID: 658856224}
+  - component: {fileID: 658856225}
   m_Layer: 5
   m_Name: Quest Panel
   m_TagString: Untagged
@@ -5490,8 +5479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75ce0b09891ed7f4f80c1ebc9e8a9b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questDescriptions:
-  - Inspect the electricity storage orb
+  questDescriptions: []
 --- !u!114 &658856224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5511,6 +5499,34 @@ MonoBehaviour:
       - m_Target: {fileID: 658856223}
         m_TargetAssemblyTypeName: QuestPanelController, Assembly-CSharp
         m_MethodName: OnQuestStepStarted
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &658856225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658856219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: d102fce4fdf384d4484285283a7b81a3, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 658856223}
+        m_TargetAssemblyTypeName: QuestPanelController, Assembly-CSharp
+        m_MethodName: OnQuestStepTurnedIn
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10021,6 +10037,7 @@ GameObject:
   - component: {fileID: 828998936}
   - component: {fileID: 828998938}
   - component: {fileID: 828998937}
+  - component: {fileID: 828998939}
   - component: {fileID: 828998934}
   m_Layer: 0
   m_Name: Michael
@@ -10160,6 +10177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignAQuest: {fileID: 11400000, guid: 1225bba9ee74eb2408a790822fe6104a, type: 2}
   questFinished: {fileID: 11400000, guid: 76e62528437ef1b4480a751a447fee75, type: 2}
+  questStepTurnedIn: {fileID: 11400000, guid: d102fce4fdf384d4484285283a7b81a3, type: 2}
 --- !u!114 &828998937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10207,6 +10225,34 @@ MonoBehaviour:
       - m_Target: {fileID: 828998936}
         m_TargetAssemblyTypeName: QuestGiver, Assembly-CSharp
         m_MethodName: onNpcZoneTriggered
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &828998939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828998931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: fea242bedc88b444b8d6902cd45fded3, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 828998936}
+        m_TargetAssemblyTypeName: QuestGiver, Assembly-CSharp
+        m_MethodName: onQuestBecomeReady
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11087,6 +11133,8 @@ GameObject:
   - component: {fileID: 2044437941}
   - component: {fileID: 2044437943}
   - component: {fileID: 2044437944}
+  - component: {fileID: 2044437945}
+  - component: {fileID: 2044437946}
   m_Layer: 0
   m_Name: QuestManager
   m_TagString: Untagged
@@ -11135,13 +11183,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: cc4ad0ef6ca909049a73059a41e6b3df, type: 2}
+  gameEvent: {fileID: 11400000, guid: d102fce4fdf384d4484285283a7b81a3, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2044437941}
         m_TargetAssemblyTypeName: QuestManager, Assembly-CSharp
-        m_MethodName: onQuestStepCompleted
+        m_MethodName: onQuestStepTurnedIn
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11170,6 +11218,50 @@ MonoBehaviour:
       - m_Target: {fileID: 2044437941}
         m_TargetAssemblyTypeName: QuestManager, Assembly-CSharp
         m_MethodName: onPlayerLevelChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2044437945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044437940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 76e62528437ef1b4480a751a447fee75, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2044437946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044437940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 1225bba9ee74eb2408a790822fe6104a, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2044437941}
+        m_TargetAssemblyTypeName: QuestManager, Assembly-CSharp
+        m_MethodName: OnAssignAQuest
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

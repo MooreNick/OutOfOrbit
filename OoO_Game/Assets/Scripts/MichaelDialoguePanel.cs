@@ -13,6 +13,7 @@ public class MichaelDialoguePanel : MonoBehaviour
     public float secsBetweenCharsTyped;
 
     private List<string> linesToSay = new List<string>();
+    private List<string> linesPrevSaid = new List<string>();
 
     private bool skippedDialogue = false;
 
@@ -41,7 +42,9 @@ public class MichaelDialoguePanel : MonoBehaviour
     {
         if(data is List<string>)
         {
-            updateDialogue((List<string>)data);
+            linesPrevSaid = linesToSay; //save previously said lines
+            updateDialogue((List<string>)data); //update linesToSay
+            startDialogue(); //linesToSay updated so can start dialogue
         }
     }
 
@@ -52,7 +55,6 @@ public class MichaelDialoguePanel : MonoBehaviour
 
     public void startDialogue()
     {
-        //TODO: may have to loop until updated dialogue to start typing dialogue
         StartCoroutine(typeDialogue());
     }
 

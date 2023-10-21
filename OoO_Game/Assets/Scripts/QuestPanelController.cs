@@ -37,6 +37,8 @@ public class QuestPanelController : MonoBehaviour
         //init activeQuestsPanel
         Transform activeQuestsPanel = transform.Find("Active Quests");
 
+        noneActive = transform.Find("None Active Text").GetComponent<TextMeshProUGUI>();
+
         //initialize the quest panel gameobjects
         questPanelOne = activeQuestsPanel.Find("Quest 1 Panel").gameObject;
         questPanelTwo = activeQuestsPanel.Find("Quest 2 Panel").gameObject;
@@ -69,7 +71,7 @@ public class QuestPanelController : MonoBehaviour
     
     public void OnQuestStepStarted(Component sender, object data)
     {
-        if(data is string && sender is QuestStep) //make sure data is the quest step description
+        if(data is string && sender is QuestStep) //make sure data is the questid
         {
             QuestStep questStep = (QuestStep)sender;
 
@@ -77,26 +79,30 @@ public class QuestPanelController : MonoBehaviour
 
             string stepDescription = questStep.description; 
 
-            if (unpopulated)
+            if (unpopulated) //no quests active
             {
                 noneActive.gameObject.SetActive(false);
                 questOneId = questId;
                 questTextOne.text = stepDescription;
+                questPanelOne.SetActive(true);
+                checkmarkOne.SetActive(false);
                 questOnePopulated = true;
             }
-            else if (!questOnePopulated)
+            else if (!questOnePopulated) //two active, one not
             {
                 questTextOne.text = stepDescription;
                 questOneId = questId;
                 questPanelOne.SetActive(true);
+                checkmarkOne.SetActive(false);
                 questOnePopulated = true;
 
             }
-            else if (!questTwoPopulated)
+            else if (!questTwoPopulated) //one active, two not
             {
                 questTextTwo.text = stepDescription;
                 questTwoId = questId;
                 questPanelTwo.SetActive(true);
+                checkmarkTwo.SetActive(false);
                 questTwoPopulated = true;
             }
             else
@@ -106,12 +112,60 @@ public class QuestPanelController : MonoBehaviour
         }
     }
 
+    public void OnQuestStepTurnedIn(Component sender, object data)
+    {
+        if(data is string) //make sure is questid string
+        {
+            string questId = (string)data;
+            if(questId == questOneId)
+            {
+                //clean up quest one panel
+                questTextOne.text = "";
+                checkmarkOne.SetActive(false);
+                questPanelOne.SetActive(false);
+
+                //reset some data for quest one
+                questOneId = null;
+                questOnePopulated = false;
+            }
+            else if(questId == questTwoId)
+            {
+                //clean up quest two panel
+                questTextTwo.text = "";
+                checkmarkTwo.SetActive(false);
+                questPanelTwo.SetActive(false);
+
+                //reset some data for quest one
+                questTwoId = null;
+                questTwoPopulated = false;
+            }
+            else
+            {
+                Debug.LogWarning("Quest turned in didnt match the active quest IDs.");
+            }
+   
+            //if no quests active then activate none active text
+            if (unpopulated)
+            {
+                noneActive.gameObject.SetActive(true);
+            }
+        }
+    }
+
     public void OnQuestStepCompleted(Component sender, object data)
     {
         if(data is string)
         {
             string questId = (string)data;
-
+            //show checkmark to signify can be turned in
+            if(questId == questOneId)
+            {
+                checkmarkOne.SetActive(true);
+            }
+            else if(questId == questTwoId)
+            {
+                checkmarkTwo.SetActive(true);
+            }
         }
     }
 

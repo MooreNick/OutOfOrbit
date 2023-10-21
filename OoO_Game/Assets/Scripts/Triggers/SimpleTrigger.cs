@@ -12,8 +12,8 @@ public class SimpleTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            onTriggerEnter.Invoke(); //invoke unityevent
             npcZoneTriggered.Raise();
+            onTriggerEnter.Invoke(); //invoke unityevent
         }
     }
 

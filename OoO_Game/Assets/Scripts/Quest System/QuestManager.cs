@@ -57,8 +57,17 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    public void OnQuestFinished(Component sender, object data)
+    {
+        if(data is string)
+        {
+            string questId = (string)data;
+            FinishQuest(questId);
+        }
+    }
 
-    public void onQuestStepCompleted(Component sender, object data)
+
+    public void onQuestStepTurnedIn(Component sender, object data)
     {
         if(data is string)
         {
@@ -79,13 +88,13 @@ public class QuestManager : MonoBehaviour
         else //all quest steps completed
         {
             ChangeQuestState(quest.info.id, QuestState.CAN_FINISH);
-            //TODO: add event invoke to inform questgiver that quest can be turned in
         }
     }
 
     private void FinishQuest(string id)
     {
-        //TODO: probably gets called by quest giver when quest gets turned in
+        ChangeQuestState(id, QuestState.FINISHED);
+        //TODO: give player quest rewards
     }
 
     private Dictionary<string, Quest> CreateQuestMap()

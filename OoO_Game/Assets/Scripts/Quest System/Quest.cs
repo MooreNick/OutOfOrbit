@@ -41,6 +41,10 @@ public class Quest
                 .GetComponent<QuestStep>(); //adds to scene
             questStep.InitializeQuestStep(info.id);
         }
+        else
+        {
+            Debug.LogWarning("Problem creating quest step prefab");
+        }
     }
 
     private GameObject GetCurrentQuestStepPrefab()
