@@ -20,7 +20,7 @@ public class MichaelDialoguePanel : MonoBehaviour
     //called when script is loaded (at game start)
     private void Awake()
     {
-        gameObject.SetActive(false); //not showing on game start
+        //gameObject.SetActive(false); //not showing on game start
 
 
         dialogueTM = GetComponentInChildren<TextMeshProUGUI>();
@@ -36,21 +36,28 @@ public class MichaelDialoguePanel : MonoBehaviour
     {
         //check for mouse left click for skip dialogue in typeDialogue
         skippedDialogue = (Input.GetMouseButton(0)) ? true : false;
-    }
+    } 
 
     public void OnQuestStepStarted(Component sender, object data)
     {
+        Debug.Log("in onQuestStepStarted");
         if(data is List<string>)
         {
+            gameObject.SetActive(true);
             linesPrevSaid = linesToSay; //save previously said lines
             updateDialogue((List<string>)data); //update linesToSay
             startDialogue(); //linesToSay updated so can start dialogue
+        }
+        else
+        {
+            Debug.Log("data was not string inside OnQuestStepStarted");
         }
     }
 
     private void updateDialogue(List<string> newLines)
     {
         linesToSay = newLines;
+        Debug.Log("updated lines to say");
     }
 
     public void startDialogue()

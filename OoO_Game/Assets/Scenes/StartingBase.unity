@@ -5003,6 +5003,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3232407341222255281, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
+      propertyPath: npcTransform
+      value: 
+      objectReference: {fileID: 828998933}
     - target: {fileID: 3639852648816973544, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
       propertyPath: m_Name
       value: player
@@ -5047,22 +5051,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.037
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7354212513530949038, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
+    - {fileID: 4635672200425468889, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3639852648816973544, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
-      insertIndex: 6
+      insertIndex: 4
       addedObject: {fileID: 1059272156}
+    - targetCorrespondingSourceObject: {fileID: 3639852648816973544, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1059272161}
   m_SourcePrefab: {fileID: 100100000, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
 --- !u!1 &445827662 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3639852648816973544, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
-  m_PrefabInstance: {fileID: 445827661}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &445827663 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 7354212513530949038, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
   m_PrefabInstance: {fileID: 445827661}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &466518162
@@ -10291,6 +10295,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLevelChanged: {fileID: 11400000, guid: 06dbeff93fc1dea40bbe0ffe97b3c95d, type: 2}
+--- !u!60 &1059272161
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445827662}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0.08, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.31, y: 0.48}
+    newSize: {x: 0.31, y: 0.48}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.10848184, y: 0.040678214}
+      - {x: 0.08427446, y: 0.10588098}
+      - {x: 0.055820405, y: 0.16245751}
+      - {x: 0.024999999, y: 0.24}
+      - {x: 0.00014016032, y: 0.2419859}
+      - {x: -0.03564488, y: 0.19381419}
+      - {x: -0.07898725, y: 0.08228826}
+      - {x: -0.155, y: 0.01}
+      - {x: -0.155, y: -0.17}
+      - {x: -0.114999995, y: -0.21}
+      - {x: -0.044999998, y: -0.24}
+      - {x: 0.065, y: -0.24}
+      - {x: 0.12028971, y: -0.22026765}
+      - {x: 0.14948463, y: -0.18805526}
+      - {x: 0.155, y: 0.03}
+  m_UseDelaunayMesh: 0
 --- !u!1 &1298843539
 GameObject:
   m_ObjectHideFlags: 0
@@ -10523,7 +10589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dabad912f4727c47a36333d95747c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 445827663}
+  player: {fileID: 0}
   sceneName: SampleScene
 --- !u!70 &1324915056
 CapsuleCollider2D:
@@ -10574,6 +10640,7 @@ GameObject:
   - component: {fileID: 1367573265}
   - component: {fileID: 1367573264}
   - component: {fileID: 1367573267}
+  - component: {fileID: 1367573268}
   - component: {fileID: 1367573266}
   m_Layer: 5
   m_Name: Michael Dialogue Panel
@@ -10581,7 +10648,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1367573263
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10709,6 +10776,34 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1367573268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367573262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 5ec0d312aaaa23046a9d83c0f033f937, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1367573262}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!1 &1683131133
 GameObject:
