@@ -20,15 +20,13 @@ public class MichaelDialoguePanel : MonoBehaviour
     //called when script is loaded (at game start)
     private void Awake()
     {
-        //gameObject.SetActive(false); //not showing on game start
-
+        gameObject.SetActive(false);
 
         dialogueTM = GetComponentInChildren<TextMeshProUGUI>();
     }
 
     private void Start()
     {
-
     }
     
     //runs every frame while dialogue panel is active
@@ -43,10 +41,9 @@ public class MichaelDialoguePanel : MonoBehaviour
         Debug.Log("in onQuestStepStarted");
         if(data is List<string>)
         {
-            gameObject.SetActive(true);
             linesPrevSaid = linesToSay; //save previously said lines
             updateDialogue((List<string>)data); //update linesToSay
-            startDialogue(); //linesToSay updated so can start dialogue
+            startDialogue();
         }
         else
         {
