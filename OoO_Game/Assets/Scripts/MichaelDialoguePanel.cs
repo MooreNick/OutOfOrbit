@@ -41,7 +41,6 @@ public class MichaelDialoguePanel : MonoBehaviour
 
     public void OnQuestStepStarted(Component sender, object data)
     {
-        Debug.Log("in onQuestStepStarted");
         if(data is List<string>)
         {
             linesPrevSaid = linesToSay; //save previously said lines
@@ -60,10 +59,20 @@ public class MichaelDialoguePanel : MonoBehaviour
         startDialogue();
     }
 
+    public void OnQuestFinalized(Component sender, object data)
+    {
+        Debug.Log("inside questfinalized");
+        if(data is List<string>)
+        {
+            List<string> finalLines = (List<string>)data;
+            updateDialogue(finalLines);
+            startDialogue(); //ending quest dialogue
+        }
+    }
+
     private void updateDialogue(List<string> newLines)
     {
         linesToSay = newLines;
-        Debug.Log("updated lines to say");
     }
 
     public void startDialogue()

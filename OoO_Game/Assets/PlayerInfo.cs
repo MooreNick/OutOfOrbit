@@ -20,7 +20,7 @@ public class PlayerInfo : MonoBehaviour
         playerLevelChanged.Raise(playerLevel);
     }
 
-    public void onQuestCompleted(Component sender, object data)
+    public void onQuestFinalized(Component sender, object data)
     {
         changeLevel(playerLevel + 1);
     }

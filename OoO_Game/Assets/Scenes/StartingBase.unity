@@ -5050,6 +5050,9 @@ PrefabInstance:
       insertIndex: 4
       addedObject: {fileID: 1059272156}
     - targetCorrespondingSourceObject: {fileID: 3639852648816973544, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 1059272165}
+    - targetCorrespondingSourceObject: {fileID: 3639852648816973544, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1059272161}
   m_SourcePrefab: {fileID: 100100000, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
@@ -10059,6 +10062,7 @@ GameObject:
   - component: {fileID: 828998936}
   - component: {fileID: 828998938}
   - component: {fileID: 828998937}
+  - component: {fileID: 828998940}
   - component: {fileID: 828998939}
   - component: {fileID: 828998934}
   m_Layer: 0
@@ -10285,6 +10289,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &828998940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828998931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: cc4ad0ef6ca909049a73059a41e6b3df, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 828998936}
+        m_TargetAssemblyTypeName: QuestGiver, Assembly-CSharp
+        m_MethodName: OnQuestStepCompleted
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1059272150 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3232407341222255281, guid: d63d93b3c4b60b44997316df8f1a0292, type: 3}
@@ -10376,6 +10408,34 @@ PolygonCollider2D:
       - {x: 0.14948463, y: -0.18805526}
       - {x: 0.155, y: 0.03}
   m_UseDelaunayMesh: 0
+--- !u!114 &1059272165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445827662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: be540f7de26fe644bbb4399503e2472f, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1059272156}
+        m_TargetAssemblyTypeName: PlayerInfo, Assembly-CSharp
+        m_MethodName: onQuestFinalized
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1298843539
 GameObject:
   m_ObjectHideFlags: 0
@@ -10661,6 +10721,7 @@ GameObject:
   - component: {fileID: 1367573267}
   - component: {fileID: 1367573268}
   - component: {fileID: 1367573269}
+  - component: {fileID: 1367573270}
   - component: {fileID: 1367573266}
   m_Layer: 5
   m_Name: Michael Dialogue Panel
@@ -10844,6 +10905,34 @@ MonoBehaviour:
       - m_Target: {fileID: 1367573266}
         m_TargetAssemblyTypeName: MichaelDialoguePanel, Assembly-CSharp
         m_MethodName: OnNpcNothingToDo
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1367573270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367573262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: be540f7de26fe644bbb4399503e2472f, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1367573266}
+        m_TargetAssemblyTypeName: MichaelDialoguePanel, Assembly-CSharp
+        m_MethodName: OnQuestFinalized
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11299,6 +11388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questBecomeReady: {fileID: 11400000, guid: fea242bedc88b444b8d6902cd45fded3, type: 2}
   questCanFinish: {fileID: 11400000, guid: ed6ca86b91a2f194bbdc34b89c6acf4a, type: 2}
+  questFinalized: {fileID: 11400000, guid: be540f7de26fe644bbb4399503e2472f, type: 2}
 --- !u!4 &2044437942
 Transform:
   m_ObjectHideFlags: 0
@@ -11385,7 +11475,19 @@ MonoBehaviour:
   gameEvent: {fileID: 11400000, guid: 76e62528437ef1b4480a751a447fee75, type: 2}
   response:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2044437941}
+        m_TargetAssemblyTypeName: QuestManager, Assembly-CSharp
+        m_MethodName: OnQuestFinished
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2044437946
 MonoBehaviour:
   m_ObjectHideFlags: 0

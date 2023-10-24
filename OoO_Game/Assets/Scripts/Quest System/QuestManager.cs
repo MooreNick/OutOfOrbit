@@ -6,6 +6,7 @@ public class QuestManager : MonoBehaviour
 {
     public GameEvent questBecomeReady;
     public GameEvent questCanFinish;
+    public GameEvent questFinalized;
 
     private Dictionary<string, Quest> questMap;
 
@@ -94,7 +95,11 @@ public class QuestManager : MonoBehaviour
     private void FinishQuest(string id)
     {
         ChangeQuestState(id, QuestState.FINISHED);
-        Debug.Log("inside QuestManager.FinishQuest()");
+
+        //for giving quest finished lines to dialogue panel and player level
+        Quest quest = GetQuestById(id);
+        questFinalized.Raise(quest.info.finishedLines);
+
         //TODO: give player quest rewards
     }
 

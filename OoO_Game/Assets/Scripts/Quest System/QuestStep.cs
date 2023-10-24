@@ -14,14 +14,11 @@ public abstract class QuestStep : MonoBehaviour
 
     private string questId;
 
-    private bool dialoguePanelIsActive = false;
-
     public void InitializeQuestStep(string questId)
     {
         this.questId = questId;
         questStepStarted.Raise(stepDialogueLines); // for dialogue panel
         questStepStarted.Raise(this, questId); // for quest panel
-        Debug.Log("questStepStarted raised");
     }
 
     protected void FinishQuestStep()

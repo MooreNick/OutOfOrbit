@@ -47,19 +47,22 @@ public class QuestGiver : MonoBehaviour
     }
 
     public void onNpcZoneTriggered(Component sender, object data)
-    {
+    { 
         if (questStepCanBeTurnedInIds.Count > 0)
         {
+            //turn in quest step
             string questIdTurnedIn = questStepCanBeTurnedInIds[0];
-            questStepCanBeTurnedInIds.RemoveAt(0);
+            questStepCanBeTurnedInIds.Remove(questIdTurnedIn);
             questStepTurnedIn.Raise(questIdTurnedIn);
-        }
-        else if (canFinishQuestIds.Count > 0) //if quest can be finished then finish it
-        {
-            string canFinishQuestId = canFinishQuestIds[0];
-            canFinishQuestIds.RemoveAt(0);
-            questFinished.Raise(canFinishQuestId);
-            --questsActive;
+            
+            //check if quest can be finished
+            if (canFinishQuestIds.Contains(questIdTurnedIn))
+            {
+                canFinishQuestIds.Remove(questIdTurnedIn);
+                questFinished.Raise(questIdTurnedIn); //notify listeners quest has finished
+                --questsActive;
+            }
+            
         }
         else if(canStartQuestIds.Count > 0) 
         {

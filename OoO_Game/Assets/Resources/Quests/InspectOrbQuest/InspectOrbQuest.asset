@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <id>k__BackingField: InspectOrbQuest
   displayName: Inspect Electric Orb
+  finishedLines:
+  - Thanks for inspecting the electric storage orb. It could be one of the lines
+    got cut. Hmm... wonder how that could've happened.
   playerLevelRequired: 0
   questStepPrefabs:
   - {fileID: 6835063461501355408, guid: f62b2cb90c6069845806fdd85d56e85c, type: 3}

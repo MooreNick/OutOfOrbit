@@ -154,7 +154,6 @@ public class QuestPanelController : MonoBehaviour
 
     public void OnQuestStepCompleted(Component sender, object data)
     {
-        Debug.Log("inside questpanelcontroller.onqueststepcompleted");
         if (checkmarkOne == null) Debug.Log("checkmarkone was null");
         if(data is string)
         {

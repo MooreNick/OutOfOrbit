@@ -95,8 +95,7 @@ public class ship_movement : MonoBehaviour
 
     public void pauseMovement()
     {
-        // stop ship in place
-        velocity = Vector3.zero;
+        velocity = velocity / 10;
         zRotationVelocity = 0;
 
         // save old accel settings

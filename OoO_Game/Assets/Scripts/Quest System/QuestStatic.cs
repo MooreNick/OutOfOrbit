@@ -9,6 +9,8 @@ public class QuestStatic : ScriptableObject
 
     [Header("General")]
     public string displayName;
+    [Tooltip("Lines npc says after entire quest is completed and turned in")]
+    public List<string> finishedLines;
 
     [Header("Prerequisites")]
     public int playerLevelRequired;
