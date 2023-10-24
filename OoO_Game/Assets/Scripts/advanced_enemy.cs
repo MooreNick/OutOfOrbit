@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class advanced_enemy : MonoBehaviour
@@ -8,7 +9,10 @@ public class advanced_enemy : MonoBehaviour
     public int health = 300;
     public int speed = 1;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private int patrolTimer = 0;
+    private Vector3 velocity;
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Projectile")
         {
@@ -18,14 +22,18 @@ public class advanced_enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (health <= 0)
+            Death();
+    }
+
+    void Patrol()
+    {
         
+
     }
 
     void Death()
     {
-        if (health <= 0)
-        {
             Destroy(this.gameObject);
-        }
     }
 }
