@@ -94,6 +94,7 @@ public class QuestManager : MonoBehaviour
     private void FinishQuest(string id)
     {
         ChangeQuestState(id, QuestState.FINISHED);
+        Debug.Log("inside QuestManager.FinishQuest()");
         //TODO: give player quest rewards
     }
 

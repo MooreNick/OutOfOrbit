@@ -7,6 +7,7 @@ public class QuestGiver : MonoBehaviour
     public GameEvent assignAQuest;
     public GameEvent questFinished;
     public GameEvent questStepTurnedIn;
+    public GameEvent npcDoNothing;
 
     private List<string> canStartQuestIds = new List<string>();
     private List<string> questStepCanBeTurnedInIds = new List<string>();
@@ -36,6 +37,15 @@ public class QuestGiver : MonoBehaviour
         }
     }
 
+    public void OnQuestStepCompleted(Component sender, object data)
+    {
+        if(data is string)
+        {
+            string questId = (string)data;
+            questStepCanBeTurnedInIds.Add(questId);
+        }
+    }
+
     public void onNpcZoneTriggered(Component sender, object data)
     {
         if (questStepCanBeTurnedInIds.Count > 0)
@@ -51,15 +61,19 @@ public class QuestGiver : MonoBehaviour
             questFinished.Raise(canFinishQuestId);
             --questsActive;
         }
-        else
+        else if(canStartQuestIds.Count > 0) 
         {
             TryAssignQuest();
+        }
+        else //nothing to do
+        {
+            npcDoNothing.Raise();
         }
     }
 
     private void TryAssignQuest()
     {
-        if (canStartQuestIds.Count > 0 && questsActive < 2) //a quest can be started and limit not exceeded
+        if (questsActive < 2) //a quest can be started and limit not exceeded
         {
             string questId = canStartQuestIds[0]; //get id of quest to assign
             canStartQuestIds.RemoveAt(0); //remove id so quest doesnt get assigned twice
@@ -68,7 +82,7 @@ public class QuestGiver : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Tried to assign a quest but there was non in canStartQuestIds");
+            Debug.Log("2 quests already active. QuestGiver.TryAssignQuest()");
         }
     }
 }

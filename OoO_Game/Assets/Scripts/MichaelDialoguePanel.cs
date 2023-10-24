@@ -14,6 +14,7 @@ public class MichaelDialoguePanel : MonoBehaviour
 
     private List<string> linesToSay = new List<string>();
     private List<string> linesPrevSaid = new List<string>();
+    private List<string> linesDoNothing = new List<string>();
 
     private bool skippedDialogue = false;
 
@@ -23,6 +24,8 @@ public class MichaelDialoguePanel : MonoBehaviour
         gameObject.SetActive(false);
 
         dialogueTM = GetComponentInChildren<TextMeshProUGUI>();
+
+        linesDoNothing.Add("Do you need something?");
     }
 
     private void Start()
@@ -49,6 +52,12 @@ public class MichaelDialoguePanel : MonoBehaviour
         {
             Debug.Log("data was not string inside OnQuestStepStarted");
         }
+    }
+
+    public void OnNpcNothingToDo(Component sender, object data)
+    {
+        linesToSay = linesDoNothing;
+        startDialogue();
     }
 
     private void updateDialogue(List<string> newLines)
@@ -93,7 +102,6 @@ public class MichaelDialoguePanel : MonoBehaviour
         }
         dialogueTM.text = "";
         onLeaveCutscene.Invoke(); // do actions to make cutscene end
-        michaelTriggerZone.SetActive(false);
         gameObject.SetActive(false); //make michael dialogue panel not show/run
     } 
     
