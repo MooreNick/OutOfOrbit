@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1625780084075102163}
   - component: {fileID: 2099884203276038901}
   - component: {fileID: 5488776387778068154}
+  - component: {fileID: 5689619666035986521}
   m_Layer: 20
   m_Name: basic_enemy
   m_TagString: enemy
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4347320493802005262}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.7703547, y: 1.5051339, z: -0.16107151}
+  m_LocalPosition: {x: -3.7703547, y: 1.5051339, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -72,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1303663087
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f7eb00cb3ec9bab45b85d561558c4250, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -146,3 +147,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   speed: 1
+  velocity: {x: 0, y: 1, z: 0}
+--- !u!50 &5689619666035986521
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4347320493802005262}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
