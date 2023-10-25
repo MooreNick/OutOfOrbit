@@ -12,29 +12,24 @@ public class MichaelDialoguePanel : MonoBehaviour
     private TextMeshProUGUI dialogueTM;
     public float secsBetweenCharsTyped;
 
-    public List<string> firstEncounterLines;
     private List<string> linesToSay = new List<string>();
+    private List<string> linesPrevSaid = new List<string>();
+    private List<string> linesDoNothing = new List<string>();
 
     private bool skippedDialogue = false;
 
     //called when script is loaded (at game start)
     private void Awake()
     {
-        gameObject.SetActive(false); //not showing on game start
-
+        gameObject.SetActive(false);
 
         dialogueTM = GetComponentInChildren<TextMeshProUGUI>();
 
-       // load up the starting lines into linesToSay
-       foreach(string line in firstEncounterLines)
-        {
-            linesToSay.Add(line);
-        } 
+        linesDoNothing.Add("Do you need something?");
     }
 
     private void Start()
     {
-
     }
     
     //runs every frame while dialogue panel is active
@@ -42,6 +37,42 @@ public class MichaelDialoguePanel : MonoBehaviour
     {
         //check for mouse left click for skip dialogue in typeDialogue
         skippedDialogue = (Input.GetMouseButton(0)) ? true : false;
+    } 
+
+    public void OnQuestStepStarted(Component sender, object data)
+    {
+        if(data is List<string>)
+        {
+            linesPrevSaid = linesToSay; //save previously said lines
+            updateDialogue((List<string>)data); //update linesToSay
+            startDialogue();
+        }
+        else
+        {
+            Debug.Log("data was not string inside OnQuestStepStarted");
+        }
+    }
+
+    public void OnNpcNothingToDo(Component sender, object data)
+    {
+        linesToSay = linesDoNothing;
+        startDialogue();
+    }
+
+    public void OnQuestFinalized(Component sender, object data)
+    {
+        Debug.Log("inside questfinalized");
+        if(data is List<string>)
+        {
+            List<string> finalLines = (List<string>)data;
+            updateDialogue(finalLines);
+            startDialogue(); //ending quest dialogue
+        }
+    }
+
+    private void updateDialogue(List<string> newLines)
+    {
+        linesToSay = newLines;
     }
 
     public void startDialogue()
@@ -80,7 +111,6 @@ public class MichaelDialoguePanel : MonoBehaviour
         }
         dialogueTM.text = "";
         onLeaveCutscene.Invoke(); // do actions to make cutscene end
-        michaelTriggerZone.SetActive(false);
         gameObject.SetActive(false); //make michael dialogue panel not show/run
     } 
     

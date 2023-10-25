@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f3be9053a314e374287713d3fc572d7a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - questStepCompleted: {fileID: 11400000, guid: cc4ad0ef6ca909049a73059a41e6b3df, type: 2}
+  - questStepStarted: {fileID: 11400000, guid: 2cac9691d7ddea341a0f447627c777c4, type: 2}
+  - MichaelDialoguePanel: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
