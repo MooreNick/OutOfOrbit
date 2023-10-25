@@ -22,7 +22,14 @@ public class Bullet : MonoBehaviour
     {
         MoveBullet();
         timer -= 0.1f;
-        DestroyBullet();
+        if (timer <= 0.0f)
+            DestroyBullet();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "enemy")
+            DestroyBullet();
     }
 
     void MoveBullet()
@@ -32,9 +39,6 @@ public class Bullet : MonoBehaviour
 
     void DestroyBullet()
     {
-        if (timer <= 0.0f)
-        {
-            Destroy(this.gameObject);
-        }
+        Destroy(this.gameObject);
     }
 }
