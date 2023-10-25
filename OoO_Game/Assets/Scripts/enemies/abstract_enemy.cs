@@ -7,9 +7,11 @@ public abstract class abstract_enemy : MonoBehaviour
     public int health;
     public int speed;
     public Vector3 velocity;
+    public SpriteRenderer enemySprite;
+
     private int patrolTimer = 0;
     private int patrolState = 0;
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Projectile")
@@ -26,6 +28,8 @@ public abstract class abstract_enemy : MonoBehaviour
             Death();
     }
 
+    public abstract void FlipSprite();
+    
     private void Patrol()
     {
         if (patrolTimer <= 30 && patrolState == 0)
@@ -34,7 +38,7 @@ public abstract class abstract_enemy : MonoBehaviour
             patrolTimer++;
             if (patrolTimer >= 30)
             {
-                //transform.Rotate(-velocity);
+                FlipSprite();
                 patrolState = 1;
             }
                 
@@ -45,13 +49,13 @@ public abstract class abstract_enemy : MonoBehaviour
             patrolTimer--;
             if (patrolTimer <= -30)
             {
-                //transform.Rotate(velocity);
+                FlipSprite();
                 patrolState = 0;
             }
                 
         }
     }
-
+    
     public void Death()
     {
         Destroy(this.gameObject);
