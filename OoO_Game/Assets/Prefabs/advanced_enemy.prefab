@@ -102,6 +102,11 @@ MonoBehaviour:
   health: 300
   speed: 1
   velocity: {x: 0, y: 1, z: 0}
+  enemySprite: {fileID: 0}
+  canPatrol: 1
+  projectileEnemy: {fileID: 7689979373192589933, guid: 7273034f78e2d1146844e33151c7d632, type: 3}
+  cooldown: 0.5
+  canShoot: 1
 --- !u!61 &4637087719488975306
 BoxCollider2D:
   m_ObjectHideFlags: 0
