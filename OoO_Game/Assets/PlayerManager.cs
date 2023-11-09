@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -17,7 +18,11 @@ public class PlayerManager : MonoBehaviour
     void Death()
     {
         if (health <= 0)
+        {
             Destroy(gameObject);
+            SceneManager.LoadScene("DeathMenu");
+        }
+        
     }
 
     void FixedUpdate()
