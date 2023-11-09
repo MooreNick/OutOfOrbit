@@ -11,6 +11,10 @@ public abstract class abstract_enemy : MonoBehaviour
 
 
     public bool canPatrol = true;
+    public bool patrolMode_UpDown = true;
+    public bool patrolMode_LeftRight = false;
+
+    public int patrolRange = 30;
 
     // Weapon variables
     public GameObject projectileEnemy;
@@ -27,10 +31,7 @@ public abstract class abstract_enemy : MonoBehaviour
     [Range(2, 5)]
     public int bursts = 3;
 
-    public bool nonStopShooting = false;
-
-    //private Quaternion flipBullet = new Quaternion.Euler();
-    
+    public bool nonStopShooting = false;    
 
     private int patrolTimer = 0;
     private int patrolState = 0;
@@ -56,30 +57,35 @@ public abstract class abstract_enemy : MonoBehaviour
     
     private void Patrol()
     { 
+        if (patrolMode_UpDown && patrolMode_LeftRight)
+        {
+            canPatrol = false; // only one mode allowed per enemy
+        }
+
         if (canPatrol)
         {
-            if (patrolTimer <= 30 && patrolState == 0)
-            {
-                transform.Translate(velocity * speed * Time.deltaTime);
-                patrolTimer++;
-                if (patrolTimer >= 30)
+                if (patrolTimer <= patrolRange && patrolState == 0)
                 {
-                    FlipSprite();
-                    patrolState = 1;
-                }
+                    transform.Translate(velocity * speed * Time.deltaTime);
+                    patrolTimer++;
+                    if (patrolTimer >= 30)
+                    {
+                        FlipSprite();
+                        patrolState = 1;
+                    }
 
-            }
-            else
-            {
-                transform.Translate(-velocity * speed * Time.deltaTime); ;
-                patrolTimer--;
-                if (patrolTimer <= -30)
+                }
+                else
                 {
-                    FlipSprite();
-                    patrolState = 0;
-                }
+                    transform.Translate(-velocity * speed * Time.deltaTime); ;
+                    patrolTimer--;
+                    if (patrolTimer <= -patrolRange)
+                    {
+                        FlipSprite();
+                        patrolState = 0;
+                    }
 
-            }
+                }
         }
     }
     
@@ -97,51 +103,85 @@ public abstract class abstract_enemy : MonoBehaviour
 
         if (canShoot)
         {
-            if (nonStopShooting)
+            if (patrolMode_UpDown)
             {
-                if (patrolState == 0)
+                if (nonStopShooting)
                 {
-                    newProjectileEnemy = Instantiate(projectileEnemy, this.transform.position, this.transform.rotation) as GameObject;
-                } 
-                
-                else
-                {
-                    Quaternion rotation = Quaternion.Euler(0, 0, 180);
-                    newProjectileEnemy = Instantiate(projectileEnemy, this.transform.position, rotation) as GameObject;
-                }
-            }
-
-            if (shotTimer >= cooldown && !nonStopShooting)
-            {
-                if (patrolState == 0 && !burstFire)
-                {
-                    newProjectileEnemy = Instantiate(projectileEnemy, this.transform.position, this.transform.rotation) as GameObject;
-                    shotTimer = 0.0f;
-                } 
-                
-                else if (patrolState == 1 && !burstFire)// Patrol state == 1 -> Ship is moving down, we rotate the instantiated bullet
-                {
-                    Quaternion rotation = Quaternion.Euler(0, 0, 180);
-                    newProjectileEnemy = Instantiate(projectileEnemy, this.transform.position, rotation) as GameObject;
-                    shotTimer = 0.0f;
-                }
-
-                else if (patrolState == 0 && burstFire)
-                {
-                    for (int i = 0; i < bursts; ++i)
+                    if (patrolState == 0)
                     {
                         newProjectileEnemy = Instantiate(projectileEnemy, this.transform.position, this.transform.rotation) as GameObject;
                     }
-                    shotTimer = 0.0f;
-                } 
-                else if (patrolState == 1 && burstFire)
-                {
-                    Quaternion rotation = Quaternion.Euler(0, 0, 180);
-                    for (int i = 0; i < bursts; ++i)
+
+                    else
                     {
+                        Quaternion rotation = Quaternion.Euler(0, 0, 180);
                         newProjectileEnemy = Instantiate(projectileEnemy, this.transform.position, rotation) as GameObject;
                     }
-                    shotTimer = 0.0f;
+                }
+
+                if (shotTimer >= cooldown && !nonStopShooting)
+                {
+                    if (patrolState == 0 && !burstFire)
+                    {
+                        newProjectileEnemy = Instantiate(projectileEnemy, this.transform.position, this.transform.rotation) as GameObject;
+                        shotTimer = 0.0f;
+                    }
+
+                    else if (patrolState == 1 && !burstFire)// Patrol state == 1 -> Ship is moving down, we rotate the instantiated bullet
+                    {
+                        Quaternion rotation = Quaternion.Euler(0, 0, 180);
+                        newProjectileEnemy = Instantiate(projectileEnemy, this.transform.position, rotation) as GameObject;
+                        shotTimer = 0.0f;
+                    }
+
+                    else if (patrolState == 0 && burstFire)
+                    {
+                        for (int i = 0; i < bursts; ++i)
+                        {
+                            newProjectileEnemy = Instantiate(projectileEnemy, this.transform.position, this.transform.rotation) as GameObject;
+                        }
+                        shotTimer = 0.0f;
+                    }
+                    else if (patrolState == 1 && burstFire)
+                    {
+                        Quaternion rotation = Quaternion.Euler(0, 0, 180);
+                        for (int i = 0; i < bursts; ++i)
+                        {
+                            newProjectileEnemy = Instantiate(projectileEnemy, this.transform.position, rotation) as GameObject;
+                        }
+                        shotTimer = 0.0f;
+                    }
+                }
+            } 
+            
+            else if (patrolMode_LeftRight)
+            {
+                if (nonStopShooting)
+                {
+                    Quaternion rotation = Quaternion.Euler(0, 0, 180);
+                    newProjectileEnemy = Instantiate(projectileEnemy, this.transform.position, rotation) as GameObject;
+                }
+
+                if (shotTimer >= cooldown)
+                {
+                    if (!burstFire)
+                    {
+                        Quaternion rotation = Quaternion.Euler(0, 0, 180);
+                        newProjectileEnemy = Instantiate(projectileEnemy, this.transform.position, rotation) as GameObject;
+                        shotTimer = 0.0f;
+                    }
+
+
+                    else if (burstFire)
+                    {
+                        
+                        Quaternion rotation = Quaternion.Euler(0, 0, 180);
+                        for (int i = 0; i < bursts; ++i)
+                        {
+                            newProjectileEnemy = Instantiate(projectileEnemy, this.transform.position, rotation) as GameObject;
+                        }
+                        shotTimer = 0.0f;
+                    }
                 }
             }
         }
