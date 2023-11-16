@@ -6,7 +6,23 @@ public class SimpleTrigger : MonoBehaviour
 
     public GameEvent npcZoneTriggered;
     public UnityEvent onTriggerEnter;
-    public GameObject michaelDialoguePanel;
+
+    [SerializeField]
+    private GameObject michaelDialoguePanel;
+
+    private void Start()
+    {
+        GameObject canvas = GameObject.FindGameObjectWithTag("Canvas");
+
+        if(canvas != null)
+        {
+            michaelDialoguePanel = canvas.transform.Find("Michael Dialogue Panel").gameObject;
+        }
+        else
+        {
+            Debug.Log("npc zone couldnt find canvas inside simple trigger script.");
+        }
+    }
 
 
     void OnTriggerEnter2D(Collider2D other)

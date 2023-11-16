@@ -20,6 +20,7 @@ public class QuestManager : MonoBehaviour
     public void onPlayerLevelChanged(Component sender, object data)
     {
         if (data is int) currentPlayerLevel = (int)data; //update the current player level
+        Debug.Log("player level changed to " + currentPlayerLevel);
         //check if any quests meet can now be started at the new level and set them as CAN_START
         foreach(Quest quest in questMap.Values)
         {
