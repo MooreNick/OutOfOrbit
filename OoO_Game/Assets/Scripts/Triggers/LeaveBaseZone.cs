@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class LeaveBaseZone : MonoBehaviour
 {
-    public Collider2D player;
     public string sceneName;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision == player)
+        if(collision.CompareTag("Player"))
         {
             SceneManager.LoadScene(sceneName);
         }
