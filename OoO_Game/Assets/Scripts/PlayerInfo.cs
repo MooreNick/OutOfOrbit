@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour
 {
-    private static PlayerInfo playerInstance;
+    public static PlayerInfo playerInstance;
 
     public GameEvent playerLevelChanged;
 

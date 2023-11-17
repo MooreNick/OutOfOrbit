@@ -7,7 +7,9 @@ using TMPro;
 public class MichaelDialoguePanel : MonoBehaviour
 {
     public GameObject michaelTriggerZone;
-    public UnityEvent onLeaveCutscene;
+
+    [SerializeField]
+    private GameEvent leaveCutscene;
 
     private TextMeshProUGUI dialogueTM;
     public float secsBetweenCharsTyped;
@@ -110,7 +112,9 @@ public class MichaelDialoguePanel : MonoBehaviour
             }
         }
         dialogueTM.text = "";
-        onLeaveCutscene.Invoke(); // do actions to make cutscene end
+
+        leaveCutscene.Raise();
+
         gameObject.SetActive(false); //make michael dialogue panel not show/run
     } 
     

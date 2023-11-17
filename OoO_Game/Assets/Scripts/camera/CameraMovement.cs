@@ -6,8 +6,9 @@ public class FollowPlayer : MonoBehaviour
 {
     private Camera cam;
 
-    public Transform player;
     public Transform npc;
+
+    private Transform player;
     
     private Vector3 targetCamPos;
     private Vector3 camPosOnEnter;
@@ -21,6 +22,9 @@ public class FollowPlayer : MonoBehaviour
 
     private void Start()
     {
+        //intitialize the player transform for camera follow capability
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+
         cam = GetComponent<Camera>();
     }
 
@@ -45,6 +49,11 @@ public class FollowPlayer : MonoBehaviour
                 transform.position = newCamPos;
             }
         }
+    }
+
+    public void OnLeaveCutscene(Component sender, object data)
+    {
+        outOfCutscene();
     }
 
     public void outOfCutscene()
