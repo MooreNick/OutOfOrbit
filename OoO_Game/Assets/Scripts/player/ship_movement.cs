@@ -95,7 +95,7 @@ public class ship_movement : MonoBehaviour
 
     public void pauseMovement()
     {
-        velocity = velocity / 10;
+        velocity = velocity / 5;
         zRotationVelocity = 0;
 
         // save old accel settings
