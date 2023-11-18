@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System;
+using UnityEngine;
 using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
@@ -9,12 +7,12 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     public Sound[] sounds;
-
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject); // Keep AudioManager alive between scenes
         }
         else
         {
@@ -27,8 +25,8 @@ public class AudioManager : MonoBehaviour
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
             s.source.loop = s.loop;
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch; 
+            s.source.volume = PlayerPrefs.GetFloat("volume", 1.0f);
+            s.source.pitch = s.pitch;
         }
     }
 
@@ -45,8 +43,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
+
         s.source.Play();
     }
-
-
 }
