@@ -57,6 +57,7 @@ public class MichaelDialoguePanel : MonoBehaviour
 
     public void OnNpcNothingToDo(Component sender, object data)
     {
+        Debug.Log("inside onnpcnothingtodo");
         linesToSay = linesDoNothing;
         startDialogue();
     }

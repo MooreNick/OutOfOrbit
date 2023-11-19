@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class QuestGiver : MonoBehaviour
 {
+    [SerializeField]
+    private GameEvent npcLoaded;
     public GameEvent assignAQuest;
     public GameEvent questFinished;
     public GameEvent questStepTurnedIn;
@@ -13,6 +15,11 @@ public class QuestGiver : MonoBehaviour
     private List<string> questStepCanBeTurnedInIds = new List<string>();
     private List<string> canFinishQuestIds = new List<string>();
     private int questsActive = 0;
+
+    private void Start()
+    {
+        npcLoaded.Raise(); //notify quest manager to send quest ids
+    }
 
     public void onQuestBecomeReady(Component sender, object data)
     {

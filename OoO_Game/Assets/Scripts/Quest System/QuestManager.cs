@@ -17,6 +17,11 @@ public class QuestManager : MonoBehaviour
         questMap = CreateQuestMap(); 
     }
 
+    public void OnNpcLoaded(Component sender, object data)
+    {
+        
+    }
+
     public void onPlayerLevelChanged(Component sender, object data)
     {
         if (data is int) currentPlayerLevel = (int)data; //update the current player level

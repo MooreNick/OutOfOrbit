@@ -5060,6 +5060,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420036}
   - component: {fileID: 519420034}
   - component: {fileID: 519420035}
   m_Layer: 0
@@ -5194,6 +5195,34 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 629c67dc5e5aa2249a9227f56c4c3e18, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 519420033}
+        m_TargetAssemblyTypeName: FollowPlayer, Assembly-CSharp
+        m_MethodName: OnLeaveCutscene
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &526201634
 GameObject:
   m_ObjectHideFlags: 0
@@ -10147,6 +10176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82fc0c49ace844e9b25bada3517252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcLoaded: {fileID: 11400000, guid: 622d40113d9ae7a4e88e768a777c1b37, type: 2}
   assignAQuest: {fileID: 11400000, guid: 1225bba9ee74eb2408a790822fe6104a, type: 2}
   questFinished: {fileID: 11400000, guid: 76e62528437ef1b4480a751a447fee75, type: 2}
   questStepTurnedIn: {fileID: 11400000, guid: d102fce4fdf384d4484285283a7b81a3, type: 2}
@@ -10562,11 +10592,11 @@ GameObject:
   - component: {fileID: 1367573263}
   - component: {fileID: 1367573265}
   - component: {fileID: 1367573264}
+  - component: {fileID: 1367573266}
   - component: {fileID: 1367573267}
   - component: {fileID: 1367573268}
   - component: {fileID: 1367573269}
   - component: {fileID: 1367573270}
-  - component: {fileID: 1367573266}
   m_Layer: 5
   m_Name: Michael Dialogue Panel
   m_TagString: Untagged
@@ -11729,6 +11759,7 @@ GameObject:
   - component: {fileID: 1059272156}
   - component: {fileID: 1059272165}
   - component: {fileID: 8877112659935457916}
+  - component: {fileID: 8877112659935457917}
   - component: {fileID: 2876792343909434295}
   - component: {fileID: 1059272161}
   m_Layer: 0
@@ -11932,6 +11963,34 @@ MonoBehaviour:
       - m_Target: {fileID: 3232407341315395836}
         m_TargetAssemblyTypeName: ship_movement, Assembly-CSharp
         m_MethodName: OnNpcZoneTriggered
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8877112659935457917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3639852649178913957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 629c67dc5e5aa2249a9227f56c4c3e18, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3232407341315395836}
+        m_TargetAssemblyTypeName: ship_movement, Assembly-CSharp
+        m_MethodName: OnLeaveCutscene
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
