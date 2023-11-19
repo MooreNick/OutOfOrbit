@@ -84,6 +84,17 @@ public class ship_movement : MonoBehaviour
 
     }
 
+    public void OnNpcZoneTriggered(Component sender, object data)
+    {
+        pauseMovement();
+        faceNPC();
+    }
+
+    public void OnLeaveCutscene(Component sender, object data)
+    {
+        unpauseMovement();
+    }
+
     public void unpauseMovement()
     {
         verticalInputAcceleration = oldVertAccel;
@@ -93,9 +104,9 @@ public class ship_movement : MonoBehaviour
         oldHorizAccel = 0;
     }
 
-    public void pauseMovement()
+    private void pauseMovement()
     {
-        velocity = velocity / 10;
+        velocity = velocity / 5;
         zRotationVelocity = 0;
 
         // save old accel settings
@@ -107,7 +118,7 @@ public class ship_movement : MonoBehaviour
         horizontalInputAcceleration = 0;
     }
 
-    public void faceNPC()
+    private void faceNPC()
     {
         if (npcTransform != null)
         {

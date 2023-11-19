@@ -4,9 +4,24 @@ using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour
 {
+    public static PlayerInfo playerInstance;
+
     public GameEvent playerLevelChanged;
 
     private int playerLevel;
+
+    private void Awake()
+    {
+        if(playerInstance == null)
+        {
+            playerInstance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     private void Start()
     {
