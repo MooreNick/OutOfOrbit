@@ -10461,6 +10461,7 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 7088699f403d641c6a0bea14bb5a331a, type: 2}
 --- !u!4 &1127781420
 Transform:
   m_ObjectHideFlags: 0
