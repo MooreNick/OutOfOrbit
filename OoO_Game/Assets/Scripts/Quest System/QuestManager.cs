@@ -7,6 +7,8 @@ public class QuestManager : MonoBehaviour
     public GameEvent questBecomeReady;
     public GameEvent questCanFinish;
     public GameEvent questFinalized;
+    [SerializeField]
+    private GameEvent sendQuestIds;
 
     private Dictionary<string, Quest> questMap;
 
@@ -19,7 +21,7 @@ public class QuestManager : MonoBehaviour
 
     public void OnNpcLoaded(Component sender, object data)
     {
-        
+        sendQuestIds.Raise(this); 
     }
 
     public void onPlayerLevelChanged(Component sender, object data)
@@ -82,6 +84,16 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    public void OnQuestStepCompleted(Component sender, object data)
+    {
+        if(data is string)
+        {
+            string questId = (string)data;
+
+            ChangeQuestState(questId, QuestState.STEP_DONE);
+        }
+    }
+
     private void AdvanceQuest(string id)
     {
         Quest quest = GetQuestById(id);
@@ -90,6 +102,8 @@ public class QuestManager : MonoBehaviour
 
         if (quest.CurrentStepExists())
         {
+            ChangeQuestState(id, QuestState.IN_PROGRESS); // STEP_DONE -> IN_PROGRESS
+
             quest.InstantiateCurrentQuestStep(this.transform);
         }
         else //all quest steps completed
@@ -134,5 +148,20 @@ public class QuestManager : MonoBehaviour
             Debug.LogError("Quest with id not found: " + id);
         }
         return questRequested;
+    }
+
+    public List<string> GetQuestIdsWithState(QuestState stateToFind) 
+    {
+        List<string> questIds = new List<string>();
+
+        foreach(var questPair in questMap)
+        {
+            if(questPair.Value.state == stateToFind)
+            {
+                questIds.Add(questPair.Key);
+            }
+        }
+
+        return questIds;
     }
 }

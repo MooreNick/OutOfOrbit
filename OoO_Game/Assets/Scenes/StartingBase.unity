@@ -10035,6 +10035,7 @@ GameObject:
   - component: {fileID: 828998932}
   - component: {fileID: 828998935}
   - component: {fileID: 828998936}
+  - component: {fileID: 828998941}
   - component: {fileID: 828998938}
   - component: {fileID: 828998937}
   - component: {fileID: 828998940}
@@ -10284,6 +10285,34 @@ MonoBehaviour:
       - m_Target: {fileID: 828998936}
         m_TargetAssemblyTypeName: QuestGiver, Assembly-CSharp
         m_MethodName: OnQuestStepCompleted
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &828998941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828998931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: defa12acb0b66f54393845740b8a2562, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 828998936}
+        m_TargetAssemblyTypeName: QuestGiver, Assembly-CSharp
+        m_MethodName: OnSendQuestIds
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11213,7 +11242,9 @@ GameObject:
   - component: {fileID: 2044437941}
   - component: {fileID: 2044437943}
   - component: {fileID: 2044437944}
+  - component: {fileID: 2044437948}
   - component: {fileID: 2044437945}
+  - component: {fileID: 2044437949}
   - component: {fileID: 2044437946}
   - component: {fileID: 2044437947}
   m_Layer: 0
@@ -11238,6 +11269,7 @@ MonoBehaviour:
   questBecomeReady: {fileID: 11400000, guid: fea242bedc88b444b8d6902cd45fded3, type: 2}
   questCanFinish: {fileID: 11400000, guid: ed6ca86b91a2f194bbdc34b89c6acf4a, type: 2}
   questFinalized: {fileID: 11400000, guid: be540f7de26fe644bbb4399503e2472f, type: 2}
+  sendQuestIds: {fileID: 11400000, guid: defa12acb0b66f54393845740b8a2562, type: 2}
 --- !u!4 &2044437942
 Transform:
   m_ObjectHideFlags: 0
@@ -11377,6 +11409,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff5982cff91653449e89b1ffe92b095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2044437948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044437940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 622d40113d9ae7a4e88e768a777c1b37, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2044437941}
+        m_TargetAssemblyTypeName: QuestManager, Assembly-CSharp
+        m_MethodName: OnNpcLoaded
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2044437949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044437940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2eb713339f5b24aa29bca9b1c2538b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: cc4ad0ef6ca909049a73059a41e6b3df, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2044437941}
+        m_TargetAssemblyTypeName: QuestManager, Assembly-CSharp
+        m_MethodName: OnQuestStepCompleted
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2047780383
 GameObject:
   m_ObjectHideFlags: 0

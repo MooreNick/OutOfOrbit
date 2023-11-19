@@ -18,7 +18,7 @@ public class QuestGiver : MonoBehaviour
 
     private void Start()
     {
-        npcLoaded.Raise(); //notify quest manager to send quest ids
+        npcLoaded.Raise(); //notify quest manager to send quest ids for init lists
     }
 
     public void onQuestBecomeReady(Component sender, object data)
@@ -30,6 +30,18 @@ public class QuestGiver : MonoBehaviour
             {
                 canStartQuestIds.Add(newCanStartQuestId);
             }
+        }
+    }
+
+    public void OnSendQuestIds(Component sender, object data)
+    {
+        QuestManager qMan = sender as QuestManager;
+
+        if(qMan != null)
+        {
+            canStartQuestIds = qMan.GetQuestIdsWithState(QuestState.CAN_START);
+            questStepCanBeTurnedInIds = qMan.GetQuestIdsWithState(QuestState.STEP_DONE);
+            canFinishQuestIds = qMan.GetQuestIdsWithState(QuestState.CAN_FINISH);
         }
     }
 
