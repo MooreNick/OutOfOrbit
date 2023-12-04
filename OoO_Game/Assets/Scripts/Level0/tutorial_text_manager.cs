@@ -36,6 +36,9 @@ public class tutorial_text_manager : MonoBehaviour
     // init
     float triggerLocationX;
 
+    // To reset the position when loading the starting base
+    Vector3 resetPosition = new Vector3(2.69f, -.59f, 0f);
+
     void Awake()
     {
         // set prompts
@@ -97,6 +100,7 @@ public class tutorial_text_manager : MonoBehaviour
         if (proceeded)
         {
             SceneManager.LoadScene("StartingBase");
+            player.gameObject.transform.position = resetPosition;
         }
         // pressed escape
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -107,6 +111,7 @@ public class tutorial_text_manager : MonoBehaviour
         if (escExit)
         {
             SceneManager.LoadScene("StartingBase");
+            player.gameObject.transform.position = resetPosition;
         }
     }
 
