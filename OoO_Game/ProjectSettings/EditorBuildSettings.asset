@@ -26,5 +26,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SpaceArea1.unity
     guid: 89f710005fa1ca147828641a139ba09a
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: afc5743f6cef2ff4db7fad778d61a579
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
