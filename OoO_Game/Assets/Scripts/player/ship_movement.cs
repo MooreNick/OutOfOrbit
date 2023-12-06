@@ -27,8 +27,14 @@ public class ship_movement : MonoBehaviour
     public GameObject projectile;
     private GameObject newProjectile;
     private float shotTimer = 0.0f;
+    private float powerUpTimer = 0.0f;
     [SerializeField]
     private float cooldown = 0.5f;
+
+    // Upgrade states
+    private bool doubleShot = false;
+    private bool burstShot = true;
+
 
     private float oldVertAccel;
     private float oldHorizAccel;
@@ -78,9 +84,37 @@ public class ship_movement : MonoBehaviour
         if (playerInput.Player.Fire.ReadValue<float>() != 0
             && shotTimer >= cooldown)
         {
-            newProjectile = Instantiate(projectile, transform.position, transform.rotation);
-            shotTimer = 0.0f;
+            Fire();
         }
+
+    }
+
+    private void Fire()
+    {
+        if (doubleShot)
+        {
+            Instantiate(projectile, transform.position - new Vector3(0.1f, 0.0f, 0.0f), transform.rotation);
+            Instantiate(projectile, transform.position + new Vector3(0.1f, 0.0f, 0.0f), transform.rotation);
+        }
+        else if (burstShot) {
+            StartCoroutine(BurstFire());
+        }
+        else
+        {
+            Instantiate(projectile, transform.position, transform.rotation);
+        }
+
+        shotTimer = 0.0f;
+        powerUpTimer = 10.0f;
+    }
+
+    private IEnumerator BurstFire()
+    {
+        Instantiate(projectile, transform.position, transform.rotation);
+        yield return new WaitForSeconds(0.125f);
+        Instantiate(projectile, transform.position, transform.rotation);
+        yield return new WaitForSeconds(0.125f);
+        Instantiate(projectile, transform.position, transform.rotation);
 
     }
 
