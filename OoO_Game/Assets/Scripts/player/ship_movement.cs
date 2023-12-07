@@ -27,8 +27,15 @@ public class ship_movement : MonoBehaviour
     public GameObject projectile;
     private GameObject newProjectile;
     private float shotTimer = 0.0f;
+    private float powerUpTimer = 0.0f;
     [SerializeField]
     private float cooldown = 0.5f;
+
+    // Upgrade states
+    private bool doubleShot = false;
+    private bool burstShot = false;
+    private bool fullAuto = false;
+
 
     private float oldVertAccel;
     private float oldHorizAccel;
@@ -78,9 +85,88 @@ public class ship_movement : MonoBehaviour
         if (playerInput.Player.Fire.ReadValue<float>() != 0
             && shotTimer >= cooldown)
         {
-            newProjectile = Instantiate(projectile, transform.position, transform.rotation);
+            Fire();
+        }
+
+        if (powerUpTimer > 0)
+        {
+            --powerUpTimer;
+        }
+
+        if (powerUpTimer == 0)
+        {
+            doubleShot = false;
+            burstShot = false;
+            fullAuto = false;
+        }
+
+    }
+    
+    // Player triggers a power up
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "powerUp")
+        {
+            // Upgrades might not work together so turn off any current ones
+            burstShot = false;
+            doubleShot = false;
+            fullAuto = false;
+
+            // Picks a random upgrade to give to the player
+            float pick = Random.Range(1, 4);   
+            switch (pick)
+            { 
+                case 1:
+                    burstShot = true; 
+                    powerUpTimer = 400.0f;
+                    break;
+                    
+                case 2:
+                    doubleShot = true;
+                    powerUpTimer = 600.0f;
+                    break;
+                case 3:
+                    fullAuto = true;
+                    powerUpTimer = 200.0f;
+                    break;
+            }
+
+            // Destroy the powerUp
+            
+            Destroy(collision.gameObject);
+        }
+    }
+
+    private void Fire()
+    {
+        if (doubleShot)
+        {
+            Instantiate(projectile, transform.position - new Vector3(0.2f, 0.0f, 0.0f), transform.rotation);
+            Instantiate(projectile, transform.position + new Vector3(0.2f, 0.0f, 0.0f), transform.rotation);
             shotTimer = 0.0f;
         }
+        else if (burstShot) {
+            StartCoroutine(BurstFire());
+            shotTimer = 0.0f;
+        }
+        else if (fullAuto)
+        {
+            Instantiate(projectile, transform.position, transform.rotation);
+        }
+        else
+        {
+            Instantiate(projectile, transform.position, transform.rotation);
+            shotTimer = 0.0f;
+        }
+    }
+
+    private IEnumerator BurstFire()
+    {
+        Instantiate(projectile, transform.position, transform.rotation);
+        yield return new WaitForSeconds(0.125f);
+        Instantiate(projectile, transform.position, transform.rotation);
+        yield return new WaitForSeconds(0.125f);
+        Instantiate(projectile, transform.position, transform.rotation);
 
     }
 
