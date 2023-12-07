@@ -104,9 +104,16 @@ MonoBehaviour:
   velocity: {x: 0, y: 1, z: 0}
   enemySprite: {fileID: 0}
   canPatrol: 1
+  patrolMode_UpDown: 1
+  patrolMode_LeftRight: 0
+  patrolRange: 30
   projectileEnemy: {fileID: 7689979373192589933, guid: 7273034f78e2d1146844e33151c7d632, type: 3}
   cooldown: 0.5
   canShoot: 1
+  burstFire: 0
+  bursts: 3
+  nonStopShooting: 0
+  powerUp: {fileID: 9039695199777951410, guid: 23a53ee4e3244e849b4197d65a46c09d, type: 3}
 --- !u!61 &4637087719488975306
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -33,7 +33,7 @@ public class ship_movement : MonoBehaviour
 
     // Upgrade states
     private bool doubleShot = false;
-    private bool burstShot = true;
+    private bool burstShot = false;
 
 
     private float oldVertAccel;
@@ -87,6 +87,42 @@ public class ship_movement : MonoBehaviour
             Fire();
         }
 
+        if (powerUpTimer > 0)
+        {
+            --powerUpTimer;
+        }
+
+        if (powerUpTimer == 0)
+        {
+            doubleShot = false;
+            burstShot = false;
+        }
+
+    }
+    
+    // Player triggers a power up
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "powerUp")
+        {
+            // Upgrades might not work together so turn off any current ones
+            burstShot = false;
+            doubleShot = false;
+
+            // Picks a random upgrade to give to the player
+            float pick = Random.Range(1, 3);   
+            switch (pick)
+            { 
+                case 1:
+                    burstShot = true; break;
+                case 2:
+                    doubleShot = true; break;
+            }
+
+            // Start the powerUpTimer and destroy the powerUp
+            powerUpTimer = 500.0f;
+            Destroy(collision.gameObject);
+        }
     }
 
     private void Fire()
@@ -105,7 +141,6 @@ public class ship_movement : MonoBehaviour
         }
 
         shotTimer = 0.0f;
-        powerUpTimer = 10.0f;
     }
 
     private IEnumerator BurstFire()

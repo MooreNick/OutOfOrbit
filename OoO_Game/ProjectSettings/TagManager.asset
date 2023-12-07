@@ -8,6 +8,7 @@ TagManager:
   - enemy
   - enemyProjectile
   - Canvas
+  - powerUp
   layers:
   - Default
   - TransparentFX

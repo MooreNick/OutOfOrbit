@@ -35,6 +35,9 @@ public abstract class abstract_enemy : MonoBehaviour
 
     private int patrolTimer = 0;
     private int patrolState = 0;
+
+    [SerializeField]
+    private GameObject powerUp;
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -50,7 +53,10 @@ public abstract class abstract_enemy : MonoBehaviour
         Shoot();
 
         if (health <= 0)
+        {
             Death();
+        }
+            
     }
 
     public abstract void FlipSprite();
@@ -91,6 +97,12 @@ public abstract class abstract_enemy : MonoBehaviour
     
     public void Death()
     {
+        float spawnPowerUp = Random.Range(0, 10);
+        if (spawnPowerUp >= 0)
+        {
+            Instantiate(powerUp, transform.position, transform.rotation);
+        }
+
         Destroy(this.gameObject);
     }
 
