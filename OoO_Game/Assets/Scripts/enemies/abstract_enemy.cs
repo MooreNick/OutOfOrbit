@@ -98,7 +98,7 @@ public abstract class abstract_enemy : MonoBehaviour
     public void Death()
     {
         float spawnPowerUp = Random.Range(0, 10);
-        if (spawnPowerUp >= 0)
+        if (spawnPowerUp == 0)
         {
             Instantiate(powerUp, transform.position, transform.rotation);
         }

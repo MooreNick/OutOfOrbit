@@ -34,6 +34,7 @@ public class ship_movement : MonoBehaviour
     // Upgrade states
     private bool doubleShot = false;
     private bool burstShot = false;
+    private bool fullAuto = false;
 
 
     private float oldVertAccel;
@@ -96,6 +97,7 @@ public class ship_movement : MonoBehaviour
         {
             doubleShot = false;
             burstShot = false;
+            fullAuto = false;
         }
 
     }
@@ -108,19 +110,29 @@ public class ship_movement : MonoBehaviour
             // Upgrades might not work together so turn off any current ones
             burstShot = false;
             doubleShot = false;
+            fullAuto = false;
 
             // Picks a random upgrade to give to the player
-            float pick = Random.Range(1, 3);   
+            float pick = Random.Range(1, 4);   
             switch (pick)
             { 
                 case 1:
-                    burstShot = true; break;
+                    burstShot = true; 
+                    powerUpTimer = 400.0f;
+                    break;
+                    
                 case 2:
-                    doubleShot = true; break;
+                    doubleShot = true;
+                    powerUpTimer = 600.0f;
+                    break;
+                case 3:
+                    fullAuto = true;
+                    powerUpTimer = 200.0f;
+                    break;
             }
 
-            // Start the powerUpTimer and destroy the powerUp
-            powerUpTimer = 500.0f;
+            // Destroy the powerUp
+            
             Destroy(collision.gameObject);
         }
     }
@@ -129,18 +141,23 @@ public class ship_movement : MonoBehaviour
     {
         if (doubleShot)
         {
-            Instantiate(projectile, transform.position - new Vector3(0.1f, 0.0f, 0.0f), transform.rotation);
-            Instantiate(projectile, transform.position + new Vector3(0.1f, 0.0f, 0.0f), transform.rotation);
+            Instantiate(projectile, transform.position - new Vector3(0.2f, 0.0f, 0.0f), transform.rotation);
+            Instantiate(projectile, transform.position + new Vector3(0.2f, 0.0f, 0.0f), transform.rotation);
+            shotTimer = 0.0f;
         }
         else if (burstShot) {
             StartCoroutine(BurstFire());
+            shotTimer = 0.0f;
+        }
+        else if (fullAuto)
+        {
+            Instantiate(projectile, transform.position, transform.rotation);
         }
         else
         {
             Instantiate(projectile, transform.position, transform.rotation);
+            shotTimer = 0.0f;
         }
-
-        shotTimer = 0.0f;
     }
 
     private IEnumerator BurstFire()
