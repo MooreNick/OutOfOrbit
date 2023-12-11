@@ -19709,7 +19709,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Tutorial: ESC to Exit
 
-    Rotate ship with arrow keys/WASP
+    Rotate ship with arrow keys/WASD
 
     Press
     Arrow Up or W to move in that direction
