@@ -7,7 +7,7 @@ public class EnemyBullet : MonoBehaviour
     public float speed = 10.0f;
     public Transform followTransform;
     [SerializeField]
-    private float timer = 180.0f;
+    private float timer = 30.0f;
     private Vector2 shipDirection;
 
     private void Start()

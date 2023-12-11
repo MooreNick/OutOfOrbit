@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   followTransform: {fileID: 2718585657856787523, guid: cff5b7220554282488d4ac783aa7b45c, type: 3}
-  timer: 180
+  timer: 30
 --- !u!70 &338905814594398582
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
