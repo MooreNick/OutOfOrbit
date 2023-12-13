@@ -36,6 +36,8 @@ public class ship_movement : MonoBehaviour
     [SerializeField]
     private float cooldown = 0.5f;
 
+    public TextMeshProUGUI powerUpText;
+
     // Upgrade states
     private bool doubleShot = false;
     private bool burstShot = false;
@@ -108,6 +110,7 @@ public class ship_movement : MonoBehaviour
             doubleShot = false;
             burstShot = false;
             fullAuto = false;
+            powerUpText.SetText("");
         }
 
         if (health == 0)
@@ -135,15 +138,18 @@ public class ship_movement : MonoBehaviour
                 case 1:
                     burstShot = true; 
                     powerUpTimer = 400.0f;
+                    powerUpText.SetText("Burst Fire");
                     break;
                     
                 case 2:
                     doubleShot = true;
                     powerUpTimer = 600.0f;
+                    powerUpText.SetText("Double Shot");
                     break;
                 case 3:
                     fullAuto = true;
                     powerUpTimer = 200.0f;
+                    powerUpText.SetText("Full Auto");
                     break;
             }
 
