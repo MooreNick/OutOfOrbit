@@ -3,8 +3,10 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ship_movement : MonoBehaviour
 {
@@ -23,6 +25,9 @@ public class ship_movement : MonoBehaviour
 
     private PlayerInput playerInput;
 
+    private float health = 10;
+    public TextMeshProUGUI healthText;
+
     // Weapon variables
     public GameObject projectile;
     private GameObject newProjectile;
@@ -30,6 +35,8 @@ public class ship_movement : MonoBehaviour
     private float powerUpTimer = 0.0f;
     [SerializeField]
     private float cooldown = 0.5f;
+
+    public TextMeshProUGUI powerUpText;
 
     // Upgrade states
     private bool doubleShot = false;
@@ -43,6 +50,11 @@ public class ship_movement : MonoBehaviour
     private void Awake()
     {
         playerInput = new PlayerInput();
+    }
+
+    private void Start()
+    {
+        healthText.SetText("Health: 10/10");
     }
 
     private void Update()
@@ -98,6 +110,13 @@ public class ship_movement : MonoBehaviour
             doubleShot = false;
             burstShot = false;
             fullAuto = false;
+            powerUpText.SetText("");
+        }
+
+        if (health == 0)
+        {
+            Destroy(this);
+            SceneManager.LoadScene("DeathMenu");
         }
 
     }
@@ -118,22 +137,32 @@ public class ship_movement : MonoBehaviour
             { 
                 case 1:
                     burstShot = true; 
-                    powerUpTimer = 400.0f;
+                    powerUpTimer = 600.0f;
+                    powerUpText.SetText("Burst Fire");
                     break;
                     
                 case 2:
                     doubleShot = true;
-                    powerUpTimer = 600.0f;
+                    powerUpTimer = 800.0f;
+                    powerUpText.SetText("Double Shot");
                     break;
+
                 case 3:
                     fullAuto = true;
-                    powerUpTimer = 200.0f;
+                    powerUpTimer = 400.0f;
+                    powerUpText.SetText("Full Auto");
                     break;
             }
 
             // Destroy the powerUp
             
             Destroy(collision.gameObject);
+        }
+
+        if (collision.tag == "enemyProjectile")
+        {
+            --health;
+            healthText.SetText("Health: " + health + "/10");
         }
     }
 
