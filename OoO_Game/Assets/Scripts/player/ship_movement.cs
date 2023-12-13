@@ -3,6 +3,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -25,6 +26,7 @@ public class ship_movement : MonoBehaviour
     private PlayerInput playerInput;
 
     private float health = 10;
+    public TextMeshProUGUI healthText;
 
     // Weapon variables
     public GameObject projectile;
@@ -46,6 +48,11 @@ public class ship_movement : MonoBehaviour
     private void Awake()
     {
         playerInput = new PlayerInput();
+    }
+
+    private void Start()
+    {
+        healthText.SetText("Health: 10/10");
     }
 
     private void Update()
@@ -148,6 +155,7 @@ public class ship_movement : MonoBehaviour
         if (collision.tag == "enemyProjectile")
         {
             --health;
+            healthText.SetText("Health: " + health + "/10");
         }
     }
 
