@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ship_movement : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class ship_movement : MonoBehaviour
     private float zRotationVelocity;
 
     private PlayerInput playerInput;
+
+    private float health = 10;
 
     // Weapon variables
     public GameObject projectile;
@@ -100,6 +103,12 @@ public class ship_movement : MonoBehaviour
             fullAuto = false;
         }
 
+        if (health == 0)
+        {
+            Destroy(this);
+            SceneManager.LoadScene("DeathMenu");
+        }
+
     }
     
     // Player triggers a power up
@@ -134,6 +143,11 @@ public class ship_movement : MonoBehaviour
             // Destroy the powerUp
             
             Destroy(collision.gameObject);
+        }
+
+        if (collision.tag == "enemyProjectile")
+        {
+            --health;
         }
     }
 
