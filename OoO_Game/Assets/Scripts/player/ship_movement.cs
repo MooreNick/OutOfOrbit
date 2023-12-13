@@ -28,6 +28,9 @@ public class ship_movement : MonoBehaviour
     private float health = 10;
     public TextMeshProUGUI healthText;
 
+    // To reset the position when loading the starting base
+    Vector3 resetPosition = new Vector3(2.69f, -.59f, 0f);
+
     // Weapon variables
     public GameObject projectile;
     private GameObject newProjectile;
@@ -115,8 +118,10 @@ public class ship_movement : MonoBehaviour
 
         if (health == 0)
         {
-            Destroy(this);
+            healthText.SetText("");
+            health = 10;
             SceneManager.LoadScene("DeathMenu");
+            transform.position = resetPosition;
         }
 
     }
