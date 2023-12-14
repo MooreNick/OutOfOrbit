@@ -35,5 +35,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Firing Range.unity
     guid: 68a97a5470ee3124380805cf62c349ea
+  - enabled: 1
+    path: Assets/Scenes/HowToPlayMenu.unity
+    guid: 2ab7283f00e6e435d8bec58bb5b5b589
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
