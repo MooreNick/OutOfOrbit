@@ -4,6 +4,9 @@ using UnityEngine;
 
 public abstract class abstract_enemy : MonoBehaviour
 {
+    [SerializeField]
+    private GameEvent enemyKilled;
+
     public int health;
     public int speed;
     public Vector3 velocity;
@@ -54,6 +57,7 @@ public abstract class abstract_enemy : MonoBehaviour
 
         if (health <= 0)
         {
+            enemyKilled.Raise();
             Death();
         }
             
