@@ -5925,7 +5925,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 148.4, y: -58.4}
+  m_AnchoredPosition: {x: 148.4, y: -58.399994}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &624300691
@@ -13306,7 +13306,7 @@ PrefabInstance:
       objectReference: {fileID: 1059272161}
     - target: {fileID: 1306661751063937270, guid: 68fb24cce58b48445b86285e16cb44fa, type: 3}
       propertyPath: toScene
-      value: Level0
+      value: Level1
       objectReference: {fileID: 0}
     - target: {fileID: 1306661751063937270, guid: 68fb24cce58b48445b86285e16cb44fa, type: 3}
       propertyPath: sceneName
@@ -13314,7 +13314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1306661751063937270, guid: 68fb24cce58b48445b86285e16cb44fa, type: 3}
       propertyPath: spawnOffsetX
-      value: -1
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 1306661751063937270, guid: 68fb24cce58b48445b86285e16cb44fa, type: 3}
       propertyPath: zRotateOffset
@@ -13322,7 +13322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1306661751063937270, guid: 68fb24cce58b48445b86285e16cb44fa, type: 3}
       propertyPath: connectingPortal
-      value: Back to Base Portal
+      value: Back to Starting Base
       objectReference: {fileID: 0}
     - target: {fileID: 7107181812650872544, guid: 68fb24cce58b48445b86285e16cb44fa, type: 3}
       propertyPath: m_Name

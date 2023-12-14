@@ -19,6 +19,7 @@ public class MichaelDialoguePanel : MonoBehaviour
     private List<string> linesDoNothing = new List<string>();
 
     private bool skippedDialogue = false;
+    private bool inDialogue = false;
 
     //called when script is loaded (at game start)
     private void Awake()
@@ -45,6 +46,7 @@ public class MichaelDialoguePanel : MonoBehaviour
     {
         if(data is List<string>)
         {
+            inDialogue = true;
             linesPrevSaid = linesToSay; //save previously said lines
             updateDialogue((List<string>)data); //update linesToSay
             startDialogue();
@@ -57,9 +59,12 @@ public class MichaelDialoguePanel : MonoBehaviour
 
     public void OnNpcNothingToDo(Component sender, object data)
     {
-        Debug.Log("inside onnpcnothingtodo");
-        linesToSay = linesDoNothing;
-        startDialogue();
+        if (!inDialogue)
+        {
+            inDialogue = true;
+            linesToSay = linesDoNothing;
+            startDialogue();
+        }
     }
 
     public void OnQuestFinalized(Component sender, object data)
@@ -112,6 +117,8 @@ public class MichaelDialoguePanel : MonoBehaviour
                 }
             }
         }
+        inDialogue = false;
+
         dialogueTM.text = "";
 
         leaveCutscene.Raise();

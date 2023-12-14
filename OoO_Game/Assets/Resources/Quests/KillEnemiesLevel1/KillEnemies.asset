@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4859f58b345ac1f4494e1a67bb9c008e, type: 3}
+  m_Name: KillEnemies
+  m_EditorClassIdentifier: 
+  <id>k__BackingField: KillEnemies
+  displayName: Kill Enemies
+  finishedLines:
+  - Thanks for killing all those enemies! You've made this area more inhabitable.
+  playerLevelRequired: 1
+  questStepPrefabs:
+  - {fileID: 3851210575435135148, guid: 6a9b571825f12b5489ca44b31acf30a0, type: 3}

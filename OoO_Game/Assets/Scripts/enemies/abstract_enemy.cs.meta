@@ -4,6 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
+  - enemyKilled: {fileID: 11400000, guid: 714d4b3917f70ca48a66301973682efe, type: 2}
   - enemySprite: {instanceID: 0}
   - projectileEnemy: {instanceID: 0}
   - powerUp: {fileID: 9039695199777951410, guid: 23a53ee4e3244e849b4197d65a46c09d, type: 3}

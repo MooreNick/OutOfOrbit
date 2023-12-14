@@ -172,6 +172,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: basic_enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5488776387778068154, guid: cff5b7220554282488d4ac783aa7b45c, type: 3}
+      propertyPath: enemyKilled
+      value: 
+      objectReference: {fileID: 11400000, guid: 714d4b3917f70ca48a66301973682efe, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -229,6 +233,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: advanced_enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7704964364191713298, guid: 6ce3af11de254d0449bef17bea89f54c, type: 3}
+      propertyPath: enemyKilled
+      value: 
+      objectReference: {fileID: 11400000, guid: 714d4b3917f70ca48a66301973682efe, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -286,6 +294,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: basic_enemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5488776387778068154, guid: cff5b7220554282488d4ac783aa7b45c, type: 3}
+      propertyPath: enemyKilled
+      value: 
+      objectReference: {fileID: 11400000, guid: 714d4b3917f70ca48a66301973682efe, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -301,7 +313,6 @@ GameObject:
   m_Component:
   - component: {fileID: 201801216}
   - component: {fileID: 201801215}
-  - component: {fileID: 201801217}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -338,20 +349,6 @@ Transform:
   - {fileID: 1689901302}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &201801217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201801214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8de3ee976c14f84b980a8fc0202d876, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  triggerLocation: {fileID: 1323040387}
 --- !u!1001 &482437717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -611,6 +608,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: advanced_enemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7704964364191713298, guid: 6ce3af11de254d0449bef17bea89f54c, type: 3}
+      propertyPath: enemyKilled
+      value: 
+      objectReference: {fileID: 11400000, guid: 714d4b3917f70ca48a66301973682efe, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -668,6 +669,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: basic_enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5488776387778068154, guid: cff5b7220554282488d4ac783aa7b45c, type: 3}
+      propertyPath: enemyKilled
+      value: 
+      objectReference: {fileID: 11400000, guid: 714d4b3917f70ca48a66301973682efe, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -725,6 +730,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: advanced_enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7704964364191713298, guid: 6ce3af11de254d0449bef17bea89f54c, type: 3}
+      propertyPath: enemyKilled
+      value: 
+      objectReference: {fileID: 11400000, guid: 714d4b3917f70ca48a66301973682efe, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -748,11 +757,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 382986924415030041, guid: 68fb24cce58b48445b86285e16cb44fa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.39
+      value: -9.7
       objectReference: {fileID: 0}
     - target: {fileID: 382986924415030041, guid: 68fb24cce58b48445b86285e16cb44fa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.44
+      value: -3.45
       objectReference: {fileID: 0}
     - target: {fileID: 382986924415030041, guid: 68fb24cce58b48445b86285e16cb44fa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -863,6 +872,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: basic_enemy (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5488776387778068154, guid: cff5b7220554282488d4ac783aa7b45c, type: 3}
+      propertyPath: enemyKilled
+      value: 
+      objectReference: {fileID: 11400000, guid: 714d4b3917f70ca48a66301973682efe, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1329,6 +1342,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: advanced_enemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7704964364191713298, guid: 6ce3af11de254d0449bef17bea89f54c, type: 3}
+      propertyPath: enemyKilled
+      value: 
+      objectReference: {fileID: 11400000, guid: 714d4b3917f70ca48a66301973682efe, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1520,6 +1537,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: basic_enemy (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5488776387778068154, guid: cff5b7220554282488d4ac783aa7b45c, type: 3}
+      propertyPath: enemyKilled
+      value: 
+      objectReference: {fileID: 11400000, guid: 714d4b3917f70ca48a66301973682efe, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -129066,6 +129087,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: basic_enemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5488776387778068154, guid: cff5b7220554282488d4ac783aa7b45c, type: 3}
+      propertyPath: enemyKilled
+      value: 
+      objectReference: {fileID: 11400000, guid: 714d4b3917f70ca48a66301973682efe, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
